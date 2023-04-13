@@ -8,7 +8,7 @@ export const Card = ({ aventura }) => {
     image = blank;
   }
   return (
-    <li key={`${aventura.username}/${aventura.title}`} className='card'>
+    <li className='card'>
       <img src={image ? image : blank} alt={`${aventura.title}`} />
       <p className='username'>{aventura.username}</p>
       <title>{aventura.title}</title>
