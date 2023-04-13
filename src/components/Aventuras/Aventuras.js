@@ -9,7 +9,10 @@ export const Aventuras = () => {
     <div>
       <ul className='aventuras'>
         {aventuras?.map((aventura) => (
-          <Card aventura={aventura} />
+          <Card
+            aventura={aventura}
+            key={`${aventura.username}/${aventura.title}`}
+          />
         ))}
       </ul>
     </div>

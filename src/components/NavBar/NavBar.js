@@ -5,8 +5,8 @@ export const NavBar = ({ buttons }) => {
     <header>
       <nav className='navbar'>
         <ul className='menu'>
-          {buttons?.map((button) => (
-            <li>
+          {buttons?.map((button, index) => (
+            <li key={`${index}-${button}`}>
               <a href={`#${button}`}>{button}</a>
             </li>
           ))}
