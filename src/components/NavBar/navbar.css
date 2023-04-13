@@ -11,3 +11,10 @@ header {
     margin: auto;
     background-color: #FF3737;
 }
+
+.menu li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0 1em;
+    padding: 0.2em 1em;
+}

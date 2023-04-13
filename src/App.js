@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Aventuras from './components/Aventuras/Aventuras';
 import NavBar from './components/NavBar/NavBar';
+import './App.css';
 
 function App() {
   return (
