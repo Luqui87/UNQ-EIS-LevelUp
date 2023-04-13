@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './navbar.css';
 
 export const NavBar = ({ buttons }) => {
@@ -7,7 +8,7 @@ export const NavBar = ({ buttons }) => {
         <ul className='menu'>
           {buttons?.map((button, index) => (
             <li key={`${index}-${button}`}>
-              <a href={`#${button}`}>{button}</a>
+              <Link to={`/${button.toLowerCase()}`}>{button}</Link>
             </li>
           ))}
         </ul>
