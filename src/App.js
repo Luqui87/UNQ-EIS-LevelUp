@@ -1,5 +1,7 @@
-import NavBar from './components/NavBar';
-import Manuales from './components/Manuales';
+
+import Aventuras from './components/Aventuras/Aventuras';
+import NavBar from './components/NavBar/NavBar';
+
 
 function App() {
   return (

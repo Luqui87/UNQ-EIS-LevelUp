@@ -1,0 +1,13 @@
+header {
+    position: sticky;
+    top: 0;
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    background-color: #FF3737;
+}
