@@ -1,24 +1,36 @@
+import { getManuals } from './functions';
 import './manuales.css'
 
 export const Manuales = () => {
-  return (
-    <main>
-        <div className="container-manuales">
-            <div className="manual">
-                <img className='portada' alt='Portada del manual del jugador' src="/manuales/manual-jugador.jpg"/>
-                <h2>Manual de jugador</h2>
+    const manuals = getManuals();
+
+    return (
+        <main>
+            <div className="container-manuales">
+                <div className="manual">
+                    <img className='portada' alt='Portada del manual del jugador' src="/manuales/manual-jugador.jpg"/>
+                    <h2>Manual de jugador</h2>
+                    <a href={manuals[0]} download={`Manual del Jugador`}>
+                        <button disabled={manuals[0] ? false : true}>Descargar</button>
+                    </a>
+                </div>
+                <div className="manual">
+                <img className='portada' alt='Portada de la guía del dungeon master' src='/manuales/manual-dm.jpg'/>
+                    <h2>Guía del dungeon Master</h2>
+                    <a href={manuals[1]} download={`Guía de Dungeon Master`}>
+                        <button disabled={manuals[1] ? false : true}>Descargar</button>
+                    </a>
+                </div>
+                <div className="manual">
+                    <img className='portada' alt='Portada del manual de monstruos' src='/manuales/manual-monstruos.jpg'/>
+                    <h2>Manual de monstruos</h2>
+                    <a href={manuals[2]} download={'Manual de Monstruos'}>
+                        <button disabled={manuals[2] ? false : true}>Descargar</button>
+                    </a>
+                </div>
             </div>
-            <div className="manual">
-            <img className='portada' alt='Portada de la guía del dungeon master' src='/manuales/manual-dm.jpg'/>
-                <h2>Guía del dungeon Master</h2>
-            </div>
-            <div className="manual">
-                <img className='portada' alt='Portada del manual de monstruos' src='/manuales/manual-monstruos.jpg'/>
-                <h2>Manual de monstruos</h2>
-            </div>
-        </div>
-    </main>
-  );
+        </main>
+    );
 };
 
 export default Manuales;
