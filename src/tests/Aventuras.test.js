@@ -19,7 +19,13 @@ describe('<Aventuras />', () => {
   });
 
   test('Puedo ver un botón para descargar la aventura que quiera', () => {
-    const button = screen.getAllByRole('button');
+    const button = screen.getAllByRole('button', { name: 'Descargar' });
+
+    expect(button).not.toBeNull();
+  });
+
+  test('Puedo ver un botón para descargar la aventura que quiera', () => {
+    const button = screen.getAllByRole('button', { name: 'Ver Online' });
 
     expect(button).not.toBeNull();
   });
