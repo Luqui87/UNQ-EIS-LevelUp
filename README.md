@@ -12,14 +12,14 @@ Proyecto Level Up para la materia Elementos de la Ingenieria de Software de la U
 # Integrantes
 |Nombre		| Usuario de Github|
 |--------------|--------------|
-|Nicolas Garili | |
+|Nicolas Garili | NFGarilli|
 |Ivana Provvidenza| |
 |Gonzalez Aduco Matías| | 
 |Lucas Alvarez| Luqui87|
 
 
 ## Product Backlog
-[Enlace al Product Backlog.](https://matiasaduco.atlassian.net/jira/software/projects/EDIS/boards/1/backlog?selectedIssue=EDIS-6)
+[Enlace al Product Backlog.](https://matiasaduco.atlassian.net/jira/software/projects/EDIDS/boards/2)
 
 ## Repositorio
 [Enlace al repositorio del proyecto](https://github.com/Luqui87/UNQ-EIS-LevelUp)
