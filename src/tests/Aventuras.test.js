@@ -7,14 +7,20 @@ beforeEach(() => {
 
 describe('<Aventuras />', () => {
   test('Hay una lista de aventuras', () => {
-    const ul = screen.getByRole('list');
+    const list = screen.getByRole('list');
 
-    expect(ul).toBeInTheDocument();
+    expect(list).toBeInTheDocument();
   });
 
   test('Ver una lista de Aventuras existente', () => {
-    const list = screen.getByRole('listitem');
+    const list = screen.getAllByRole('listitem');
 
-    expect(list).toBeInTheDocument();
+    expect(list.length).not.toBeNull();
+  });
+
+  test('Puedo ver un botón para descargar la aventura que quiera', () => {
+    const button = screen.getAllByRole('button');
+
+    expect(button).not.toBeNull();
   });
 });
