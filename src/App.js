@@ -15,6 +15,7 @@ function App() {
           <Route path='/aventuras' element={<Aventuras />} />
           <Route path='/manuales' element={<Manuales/>} />
           <Route path='/aventuras/:aventura_title' element={<AventuraView />} />
+          <Route path='/manuales/:manual_title' element={<AventuraView />} />
         </Routes>
       </BrowserRouter>
     </>
