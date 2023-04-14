@@ -1,7 +1,16 @@
+.searchbox {
+    margin: 3em auto auto;
+    display: block;
+    width: 70em;
+    height: 2em;
+    border: 1px solid gray;
+    border-radius:0.5em;
+}
+
 .aventuras {
     display: flex;
     flex-wrap: wrap;
-    margin: 3em auto;
+    margin: 1em auto;
     width: 75em;
 }
 
