@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { getFile, getImage } from './functions';
 
 export const Card = ({ aventura }) => {
@@ -12,9 +13,14 @@ export const Card = ({ aventura }) => {
       <p>Nivel: {aventura.level}</p>
       <p>Duración: {aventura.duration}</p>
       <p>Idioma: {aventura.language}</p>
-      <a href={file} download={`${aventura.download}`}>
-        <button disabled={file ? false : true}>Descargar</button>
-      </a>
+      <span>
+        <a href={file} download={`${aventura.download}`}>
+          <button disabled={file ? false : true}>Descargar</button>
+        </a>
+        <Link to={`/aventuras/${aventura.title}`} state={aventura}>
+          <button>Ver Online</button>
+        </Link>
+      </span>
     </li>
   );
 };
