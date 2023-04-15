@@ -17,6 +17,7 @@
 .card {
     list-style-type: none;
     width: 20em;
+    height: 30em;
     border: 0.15em solid #C5C5C5;
     border-radius: 0.5em;
     margin: 1em;
