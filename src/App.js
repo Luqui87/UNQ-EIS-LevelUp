@@ -13,8 +13,10 @@ function App() {
         <Routes>
           <Route path='/' element={<></>} />
           <Route path='/aventuras' element={<Aventuras />} />
-          <Route path='/manuales' element={<Manuales />} />
+          <Route path='/manuales' element={<Manuales/>} />
           <Route path='/aventuras/:aventura_title' element={<PDFView />} />
+          <Route path='/manuales/:manual_title' element={<PDFView />} />
+
         </Routes>
       </BrowserRouter>
     </>
