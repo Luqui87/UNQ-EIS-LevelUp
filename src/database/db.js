@@ -1,12 +1,12 @@
 export const aventuras = [
   {
     username: 'Wizard at the Coasts',
-    title: 'Cuentos del Portal Bostezante',
+    title: 'Cuentos Del Portal Bostezante',
     level: '20',
     duration: 'Larga',
     language: 'Español',
-    resource: 'cuentos-del-portal-boztesante.png',
-    download: 'Cuentos del Portal Bostezante.pdf',
+    resource: 'Cuentos Del Portal Bostezante.jpg',
+    download: 'Cuentos Del Portal Bostezante.pdf',
   },
   {
     username: 'Wizard at the Coasts',
@@ -14,8 +14,8 @@ export const aventuras = [
     level: '20',
     duration: 'Larga',
     language: 'Español',
-    resource: 'desde-el-abismo.png',
-    download: 'Desde el Abismo.pdf',
+    resource: 'Desde El Abismo.jpg',
+    download: 'Desde El Abismo.pdf',
   },
   {
     username: 'Wizard at the Coasts',
@@ -23,8 +23,8 @@ export const aventuras = [
     level: '20',
     duration: 'Larga',
     language: 'Español',
-    resource: 'la-maldición-de-strahd.png',
-    download: 'La Maldición de Strahd.pdf',
+    resource: 'La Maldición De Strahd.jpg',
+    download: 'La Maldición De Strahd.pdf',
   },
   {
     username: 'Wizard at the Coasts',
@@ -32,8 +32,8 @@ export const aventuras = [
     level: '20',
     duration: 'Larga',
     language: 'Español',
-    resource: 'la-tumba-de-la-aniquilacion.png',
-    download: 'La Tumba de la Aniquilación.pdf',
+    resource: 'La Tumba De La Aniquilación.jpg',
+    download: 'La Tumba De La Aniquilación.pdf',
   },
   {
     username: 'Wizard at the Coasts',
@@ -41,8 +41,8 @@ export const aventuras = [
     level: '20',
     duration: 'Larga',
     language: 'Español',
-    resource: 'principes-del-apocalipsis.png',
-    download: 'Principes del Apocalipsis.pdf',
+    resource: 'Príncipes Del Apocalipsis.jpg',
+    download: 'Príncipes Del Apocalipsis.pdf',
   },
 ];
 

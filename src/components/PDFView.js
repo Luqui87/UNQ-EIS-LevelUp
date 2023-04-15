@@ -7,11 +7,21 @@ const convertFolder = (folder) => {
   }
 }
 
-export const AventuraView = () => {
+const checkTilde = (text) =>{
+  let convert = text.replace(/%C3%B3/g,'ó')
+  convert = convert.replace(/%C3%AD/g,'í')
+  return convert
+}
+
+export const PDFView = () => {
   const path = useLocation().pathname.split('/');
   const folder = convertFolder(path[1])
-  const file = path[2].replace(/%20/g, " ")
-  const pdf = require(`../../resources/${folder}/${file}.pdf`);
+  let file = path[2].replace(/%20/g, " ")
+  file = checkTilde(file)
+  console.log(file)
+  const pdf = require(`../resources/${folder}/${file}.pdf`);
+  
+
   return (
     <center>
       <h1>{file}</h1>
@@ -20,3 +30,4 @@ export const AventuraView = () => {
   );
 };
 
+export default PDFView;

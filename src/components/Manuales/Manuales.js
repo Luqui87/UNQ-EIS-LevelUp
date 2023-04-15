@@ -17,7 +17,7 @@ export const Manuales = () => {
                     </a>
                 </div>
                 <div className="manual">
-                    <Link to={`./Guia del Dungeon Master`}>
+                    <Link to={`./Guía del Dungeon Master`}>
                         <img className='portada' alt='Portada de la guía del dungeon master' src='/manuales/manual-dm.jpg'/>
                     </Link>
                     <h2>Guía del dungeon Master</h2>
