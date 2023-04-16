@@ -9,12 +9,21 @@ export const Aventuras = () => {
 
   const filterBySearch = (event) => {
     const query = event.target.value;
+    const normalizedQuery = removeAccents(query);
+
     var updatedList = [...aventuras];
     updatedList = updatedList.filter((item) => {
-      // return item.title.toLowerCase().indexOf(query.toLowerCase()) !== -1;
-      return item.title.toLowerCase().includes(query);
+      const normalizedTitle = removeAccents(item.title);
+      return normalizedTitle.includes(normalizedQuery);
     });
     setFilteredList(updatedList);
+  };
+
+  const removeAccents = (str) => {
+    return str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
   };
 
   return (

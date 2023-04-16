@@ -22,7 +22,7 @@ export const PDFView = () => {
   const folder = convertFolder(path[1]);
   let file = path[2].replace(/%20/g, ' ');
   file = checkTilde(file);
-  const pdf = require(`../resources/${folder}/${file}/${file}.pdf`);
+  const pdf = require(`../resources/${folder}/${file}.pdf`);
 
   return (
     <center>
