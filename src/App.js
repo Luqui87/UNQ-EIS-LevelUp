@@ -4,19 +4,20 @@ import NavBar from './components/NavBar/NavBar';
 import './App.css';
 import Manuales from './components/Manuales/Manuales';
 import PDFView from './components/PDFView';
+import Personaje from './components/Personaje/Personaje';
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBar buttons={['Inicio', 'Aventuras', 'Manuales']} />
+        <NavBar buttons={[ 'Aventuras', 'Manuales']} />
         <Routes>
           <Route path='/' element={<></>} />
           <Route path='/aventuras' element={<Aventuras />} />
           <Route path='/manuales' element={<Manuales/>} />
           <Route path='/aventuras/:aventura_title' element={<PDFView />} />
           <Route path='/manuales/:manual_title' element={<PDFView />} />
-
+          <Route path='personajes/:personaje' element={<Personaje/>} />
         </Routes>
       </BrowserRouter>
     </>

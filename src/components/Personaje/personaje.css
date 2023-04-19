@@ -1,0 +1,93 @@
+
+.container-personaje {  
+    min-height: 92vh;
+    padding-top: 0.5vh;
+    align-items: start;
+    display: grid;
+    grid-template-columns:25% 75%;
+    grid-template-rows: auto;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "personaje-Card stats stats"
+      "personaje-Card backstory backstory";
+  }
+  
+@media only screen and (max-width: 800px) {
+    .container-personaje {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+  }
+
+.personaje-Card { 
+    grid-area: personaje-Card;
+    display: flex;
+    justify-content: center;
+}
+
+.personaje-Card .box{
+    border: 0.15em solid black;
+    border-radius: 0.5em;
+    width: 25em;
+    margin: 1.5em;
+    display: flex;
+    flex-direction: column;
+    max-height: 50em;
+}
+
+.personaje-Card .box h2{
+    text-align: center;
+    background-color: #FF3737;
+    margin: 0;
+    height: 2em;
+    padding: 1em;
+    
+}
+
+.personaje-Card .box img{
+    margin-top: 0;
+}
+
+.personaje-Card .box .info{
+    margin: 1em 1em;
+    font-size: 1.2em;
+}
+
+.stats {
+    grid-area: stats;
+    text-align: center;
+}
+
+.stats h2{
+    font-size:2.5em;
+}
+
+.stats ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.stats li{
+    width: 33%;
+    font-size: 2em;
+    list-style-type: none;
+}
+
+.stats li span{
+    background-color: #FF3737;
+    padding: 0.4em;
+}
+  
+.backstory {
+    grid-area: backstory;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.5em;
+}
+  
