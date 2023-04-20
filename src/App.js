@@ -5,6 +5,7 @@ import './App.css';
 import Manuales from './components/Manuales/Manuales';
 import PDFView from './components/PDFView';
 import Personaje from './components/Personaje/Personaje';
+import PersonajePDF from './components/Personaje/PersonajePDF';
 
 function App() {
   return (

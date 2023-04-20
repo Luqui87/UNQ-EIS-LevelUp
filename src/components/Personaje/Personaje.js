@@ -1,4 +1,6 @@
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import './personaje.css';
+import PersonajePDF from './PersonajePDF';
 export const Personaje = () => {
   
   const stats = [{tipo:'Fuerza', valor:'10'},{tipo:'Fuerza', valor:'10'},{tipo:'Fuerza', valor:'10'},{tipo:'Fuerza', valor:'10'},{tipo:'Fuerza', valor:'10'},{tipo:'Fuerza', valor:'10'}]
@@ -23,8 +25,9 @@ export const Personaje = () => {
             <p>Alineación: Lawful Neutral</p>
           </div>
         </div>
-
-        <button>Descargar</button>
+        <PDFDownloadLink document={<PersonajePDF/>} filename="Personaje">
+          <button className='botonPDF'>Descargar</button>
+        </PDFDownloadLink>
       </div>
 
       <div className="stats">
