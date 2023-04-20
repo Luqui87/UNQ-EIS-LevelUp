@@ -1,0 +1,57 @@
+.characters {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 48em;
+    margin: 5em auto;
+}
+
+.characters section:not(:first-child) {
+    margin-top: 1em;
+}
+
+.characters * {
+    text-decoration: none;
+}
+
+.characters *:link, .characters *:visited {
+    color: black;
+}
+
+.character_card {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.3em;
+    text-align: center;
+    border: 0.15em solid grey;
+    border-radius: 0.5em;
+}
+
+.character_card:not(:first-child) {
+    margin-top: 1em;
+}
+
+.character_card img {
+    max-width: 113px;
+    min-height: 160px;
+    border-top-left-radius: 0.3em;
+    border-bottom-left-radius: 0.3em;
+}
+
+.character_card > span {
+    margin: 0 auto;
+    max-width: 30em;
+    max-height: 20em;
+}
+
+.biography {
+    margin-top: 0.5em;
+    font-size: 0.8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-height: 1.2em;
+    max-height: 4.8em;
+}
