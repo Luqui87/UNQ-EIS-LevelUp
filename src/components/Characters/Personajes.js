@@ -1,48 +1,41 @@
 import './personajes.css';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import icons from '../../resources/character/race_icons/icons';
+import loading_icon from '../../resources/loading.gif';
+import PersonajeCard from './PersonajeCard.js';
 
 export const Personajes = () => {
   const [data, setData] = useState([{}]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:3010/characters/default', { method: 'GET' })
       .then((response) => response.json())
-      .then((data) => setData(data))
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      })
       .catch((error) => console.error(error));
   }, []);
 
-  const getImage = (img) => {
-    console.log(img);
-    const result = icons.filter((icon) => icon.name === img);
-    return result[0].img || 'img';
-  };
-
   return (
-    <div className='characters'>
-      {data?.map((personaje) => {
-        return (
-          <Link
-            to={`/${personaje.owner}/${personaje.fullname?.toLowerCase()}`}
-            className='character_card'
-          >
-            <img
-              src={personaje.img ? getImage(personaje.img) : '#'}
-              alt='char_icon'
-            />
-            <span>
-              <div>
-                <b>{personaje.fullname}</b>
-              </div>
-              {personaje.race} - {personaje.class} - Nivel: {personaje.level}
-              <i className='biography'>"{personaje.biography}"</i>
-            </span>
-          </Link>
-        );
-      })}
-    </div>
+    <>
+      {loading ? (
+        <img
+          src={loading_icon}
+          alt='cargando'
+          style={{ maxWidth: '20em', margin: '0 auto' }}
+        />
+      ) : (
+        <>
+          <div className='characters'>
+            {data.map((personaje) => {
+              return <PersonajeCard personaje={personaje} />;
+            })}
+          </div>
+        </>
+      )}
+    </>
   );
 };
 
