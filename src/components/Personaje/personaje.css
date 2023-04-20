@@ -27,17 +27,18 @@
 .personaje-Card { 
     grid-area: personaje-Card;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
 .personaje-Card .box{
     border: 0.15em solid black;
     border-radius: 0.5em;
-    width: 25em;
+    width: 90%;
     margin: 1.5em;
     display: flex;
     flex-direction: column;
-    max-height: 50em;
+    height: auto;
 }
 
 .personaje-Card .box h2{
@@ -51,11 +52,24 @@
 
 .personaje-Card .box img{
     margin-top: 0;
+    width: 100%;
+    height: auto;
 }
 
 .personaje-Card .box .info{
     margin: 1em 1em;
     font-size: 1.2em;
+}
+
+.personaje-Card button {
+    color: white;
+    background-color: red;
+    font-size: 1em;
+    border: 0;
+    border-radius: 0.2em;
+    padding: 0.9em 2.7em;
+    cursor: pointer;
+    margin: 0 2em;
 }
 
 .stats {
@@ -76,6 +90,7 @@
     width: 33%;
     font-size: 2em;
     list-style-type: none;
+    margin-left: 0;
 }
 
 .stats li span{

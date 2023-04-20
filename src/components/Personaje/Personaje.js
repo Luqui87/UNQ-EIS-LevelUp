@@ -23,6 +23,8 @@ export const Personaje = () => {
             <p>Alineación: Lawful Neutral</p>
           </div>
         </div>
+
+        <button>Descargar</button>
       </div>
 
       <div className="stats">
