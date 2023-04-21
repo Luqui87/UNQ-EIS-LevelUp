@@ -1,13 +1,30 @@
 .characters {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
     width: 48em;
     margin: 5em auto;
 }
 
-.characters section:not(:first-child) {
-    margin-top: 1em;
+.characters button {
+    flex-basis: 25%;
+    height: 3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    border: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #b6b6b6;
+    color: #333;
+    cursor: pointer;
+}
+
+.characters button.active {
+    flex-basis: 30%;
+    transform: scaleY(1.15);
+    transform-origin: bottom;
+    background-color: #FF3737;
+    color: #FFF;
 }
 
 .characters * {
@@ -19,23 +36,21 @@
 }
 
 .character_card {
+    flex-basis: 100%;
     display: flex;
     flex-wrap: wrap;
     font-size: 1.3em;
     text-align: center;
     border: 0.15em solid grey;
-    border-radius: 0.5em;
 }
 
-.character_card:not(:first-child) {
-    margin-top: 1em;
+.character_card :not(:first-child) {
+    margin-top: 0.8em;
 }
 
 .character_card img {
     max-width: 113px;
     min-height: 160px;
-    border-top-left-radius: 0.3em;
-    border-bottom-left-radius: 0.3em;
 }
 
 .character_card > span {
@@ -51,7 +66,7 @@
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     line-height: 1.2em;
-    max-height: 4.8em;
+    max-height: 3.6em;
 }
