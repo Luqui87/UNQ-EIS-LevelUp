@@ -1,11 +1,24 @@
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import './personaje.css';
 import PersonajePDF from './PersonajePDF';
+import { useEffect, useState } from 'react';
+import { getCharacter } from '../../Api';
+import { useLocation } from 'react-router-dom';
+import { getImage } from '../Personaje/functions';
+
 export const Personaje = () => {
-  
-  const stats = [{tipo:'Fuerza', valor:'10'},{tipo:'Fuerza', valor:'10'},{tipo:'Fuerza', valor:'10'},{tipo:'Fuerza', valor:'10'},{tipo:'Fuerza', valor:'10'},{tipo:'Fuerza', valor:'10'}]
+  const [personaje, setPersonaje] = useState([])
 
+  const path = useLocation().pathname.split('/');
+  console.log(path);
 
+  useEffect(() =>{
+    getCharacter(path[2],path[3])
+    .then(character => setPersonaje(character))
+  },[])
+
+  const stats = [{tipo:'Fuerza', valor:personaje.strength},{tipo:'Agilidad', valor:personaje.dexterity},{tipo:'Constitución', valor:personaje.constitution},{tipo:'Inteligencia', valor:personaje.intelligence},{tipo:'Sabiduría', valor:personaje.wisdom},{tipo:'Carisma', valor:personaje.charisma}]
+ 
  
   return (
     <main>
@@ -13,19 +26,18 @@ export const Personaje = () => {
 
       <div className="personaje-Card">
         <div className='box'>
-          <h2>Thorfinn "El Pacifista"</h2>
-          <img 
+          <span>{personaje.fullname}</span>
+          <img sr
           alt='Portada del manual de monstruos'
-          src='/manuales/manual-monstruos.jpg'/>
+          src={getImage(personaje.race,personaje.img)}/>
         
           <div className="info">
-            <p>Raza: Humano</p>
-            <p>Clase: Vikingo</p>
-            <p>Origen: Tierras Nordicas</p>
-            <p>Alineación: Lawful Neutral</p>
+            <p>Raza: {personaje.race}</p>
+            <p>Clase: {personaje.class}</p>
+            <p>Alineación: {personaje.alignment}</p>
           </div>
         </div>
-        <PDFDownloadLink document={<PersonajePDF/>} filename="Personaje">
+        <PDFDownloadLink document={<PersonajePDF personaje={personaje}/>} filename="Personaje">
           <button className='botonPDF'>Descargar</button>
         </PDFDownloadLink>
       </div>
@@ -34,7 +46,7 @@ export const Personaje = () => {
         <h2>Stats</h2>
         <ul>
           {stats?.map((stat) => (
-          <li>
+          <li key={stat.tipo}>
             <p>{stat.tipo}</p>
             <span>{stat.valor}</span>
           </li>
@@ -44,14 +56,9 @@ export const Personaje = () => {
       
       <div className="backstory">
           <h2>Backstory</h2>
-          <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed urna enim. Ut sed sagittis tortor. Phasellus tristique arcu consectetur diam dignissim, et bibendum massa imperdiet. Suspendisse eros mi, vehicula ut molestie at, consectetur in sem. Vestibulum malesuada elit ex, a condimentum risus iaculis eget. Morbi ut malesuada risus, sed porttitor metus. Donec quis scelerisque dolor. Suspendisse ac porttitor diam, vitae ultricies magna. Sed scelerisque dictum ullamcorper. Duis viverra est vitae ante ullamcorper, sit amet dapibus dui fringilla. Vivamus at lorem ut ligula eleifend ornare sed vitae lorem. Pellentesque eget porta arcu.
-
-          Duis pretium nulla et imperdiet pulvinar. Mauris malesuada lacinia dui, nec iaculis mauris elementum ac. Ut vel facilisis felis, a condimentum ex. Aenean placerat ac dui eu ultricies. Nulla augue ipsum, varius et leo vitae, posuere vestibulum turpis. Morbi et lorem justo. Cras sollicitudin condimentum eros, vel finibus enim lacinia id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id interdum massa, sit amet suscipit nulla. Ut arcu eros, hendrerit quis eleifend sit amet, fringilla eget urna. Fusce quis mauris aliquet, consequat velit nec, dignissim turpis.
-
-          Sed convallis ipsum mollis pulvinar venenatis. Ut commodo ipsum id neque malesuada, in tincidunt mauris consectetur. Suspendisse dignissim sit amet ex bibendum ultricies. Nulla a mi sit amet metus efficitur consectetur quis eget erat. Aliquam ornare urna sed ligula convallis interdum. Curabitur arcu tellus, porttitor quis risus ac, blandit hendrerit urna. Vestibulum varius odio mauris, sed cursus tellus volutpat sit amet. Nullam sem lectus, hendrerit non nunc pharetra, viverra tincidunt justo. Mauris tincidunt elit sed purus gravida sagittis. Fusce lectus enim, hendrerit ac imperdiet at, efficitur in ipsum. Pellentesque ut laoreet nisi, sed lobortis lorem. In hac habitasse platea dictumst. Sed vel elementum metus, vitae posuere est. Cras sed est nec felis interdum suscipit. Aenean libero orci, gravida at quam non, ornare feugiat turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-          
-          </p>
+          <pre>
+            {personaje.biography}
+          </pre>
       </div>
 
     </div>
