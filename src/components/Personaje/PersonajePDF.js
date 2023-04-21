@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   },
   imagen:{
     width: '100%',
+    borderRadius: '15px'
   },
   stat:{
     marginTop: '5px',

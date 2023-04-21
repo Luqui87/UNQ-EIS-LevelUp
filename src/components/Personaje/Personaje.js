@@ -50,7 +50,7 @@ export const Personaje = () => {
             <p>Alineación: {personaje.alignment}</p>
           </div>
         </div>
-        <PDFDownloadLink document={<PersonajePDF personaje={personaje}/>} filename="Personaje">
+        <PDFDownloadLink document={<PersonajePDF personaje={personaje}/>} fileName={personaje.fullname}>
           <button className='botonPDF'>Descargar</button>
         </PDFDownloadLink>
       </div>
