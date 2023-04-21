@@ -13,7 +13,6 @@ export const Personaje = () => {
   const [stats, setStats] = useState([]);
 
   const path = useLocation().pathname.split('/');
-  console.log(path);
 
   useEffect(() =>{
     getCharacter(path[2],path[3])
@@ -28,13 +27,13 @@ export const Personaje = () => {
  
   return (
     <main>
-      {loading ? (
+      {loading ? 
         <img
           src={loading_icon}
           alt='cargando'
           style={{ maxWidth: '20em', margin: '0 45%',}}
         />
-      ) : (
+       : 
       <div className="container-personaje">
 
       <div className="personaje-Card">
@@ -75,7 +74,7 @@ export const Personaje = () => {
       </div>
 
     </div>
-    )}
+    }
     </main>
     );
   };
