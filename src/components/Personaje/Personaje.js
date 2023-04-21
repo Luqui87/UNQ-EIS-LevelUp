@@ -5,23 +5,36 @@ import { useEffect, useState } from 'react';
 import { getCharacter } from '../../Api';
 import { useLocation } from 'react-router-dom';
 import { getImage } from '../Personaje/functions';
+import loading_icon from '../../resources/loading.gif';
 
 export const Personaje = () => {
   const [personaje, setPersonaje] = useState([])
+  const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState([]);
 
   const path = useLocation().pathname.split('/');
   console.log(path);
 
   useEffect(() =>{
     getCharacter(path[2],path[3])
-    .then(character => setPersonaje(character))
+    .then(character => {
+      setPersonaje(character);
+      setStats([{tipo:'Fuerza', valor:character.strength},{tipo:'Agilidad', valor:character.dexterity},{tipo:'Constitución', valor:character.constitution},{tipo:'Inteligencia', valor:character.intelligence},{tipo:'Sabiduría', valor:character.wisdom},{tipo:'Carisma', valor:character.charisma}])
+      setLoading(false)
+    })
   },[])
 
-  const stats = [{tipo:'Fuerza', valor:personaje.strength},{tipo:'Agilidad', valor:personaje.dexterity},{tipo:'Constitución', valor:personaje.constitution},{tipo:'Inteligencia', valor:personaje.intelligence},{tipo:'Sabiduría', valor:personaje.wisdom},{tipo:'Carisma', valor:personaje.charisma}]
- 
+
  
   return (
     <main>
+      {loading ? (
+        <img
+          src={loading_icon}
+          alt='cargando'
+          style={{ maxWidth: '20em', margin: '0 45%',}}
+        />
+      ) : (
       <div className="container-personaje">
 
       <div className="personaje-Card">
@@ -46,7 +59,7 @@ export const Personaje = () => {
         <h2>Stats</h2>
         <ul>
           {stats?.map((stat) => (
-          <li key={stat.tipo}>
+            <li key={stat.tipo}>
             <p>{stat.tipo}</p>
             <span>{stat.valor}</span>
           </li>
@@ -62,9 +75,10 @@ export const Personaje = () => {
       </div>
 
     </div>
+    )}
     </main>
-  );
-};
+    );
+  };
   
   export default Personaje;
   

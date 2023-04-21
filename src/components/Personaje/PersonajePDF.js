@@ -1,107 +1,95 @@
-import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet, Image, PDFViewer } from '@react-pdf/renderer';
 import { getImage } from './functions';
 
 // Create styles
 const styles = StyleSheet.create({
+  
   page: {
-    flexDirection: 'column',
-    margin:10,
-  },
-  column1:{
     flexDirection: 'row',
-    height: 450,
+    backgroundColor:'#E0C9A6',
+    padding: '10px',
+    width: '100vw',
   },
   personajeCard: {
-    margin: 10,
+    backgroundColor: '#B3A084',
+    marginTop: '20px',
     padding: 10,
     flexDirection: 'column',
     alignItems: 'center',
     border: '1px solid black',
-    backgroundColor: '#FF3737',
-    color: 'white',
-    marginTop: 10,
-    width: 300
-  },
-  viewer: {
-    width: window.innerWidth, //the pdf viewer will take up all of the width and height
-    height: window.innerHeight,
+    width: '60%',
+    height: '95%'
   },
   imagen:{
-    width: 200,
-  },
-  info:{
-    marginTop: 100,
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: 400
-  },
-  stats:{
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    width: '100%',
   },
   stat:{
-    width: '10em',
+    marginTop: '5px',
+    width: '63%',
     textAlign : 'center',
+    border: '1px solid black',
+    borderRadius: '10px'
   },
   valor:{
-    backgroundColor: '#FF3737',
-    height: 40,
-    fontSize: 30,
-    marginTop: 3,
-    marginLeft: 27,
-    width: 50,
-  }
+    fontSize:'35px'
+  },
+  backstory:{
+    flexDirection:'column',
+    textAlign: 'center',
+    alignItems: 'center',
+    width: '100%',
+    fontSize:'20px',
+    paddingTop: '20px',
+    margin:'5px'
+  },
 });
 
 // Create Document Component
 const PersonajePDF = ({personaje}) => (
-        <Document>
-            <Page size="A4" style={styles.page}>
-            <View style={styles.column1}>
-                <View style={styles.personajeCard}>
-                    <Text style={{marginBottom: 10,}}>Thorfinn "El Pacifista"</Text>
-                    <Image style={styles.imagen} src={getImage(personaje.race, personaje.img)}/>
-                    <Text style={{marginTop:15}}>Raza: {personaje.race}</Text>
-                    <Text style={{marginTop:15}}>Clase: {personaje.class}</Text>
-                    <Text style={{marginTop:15}}>Alineación:{personaje.alignment}</Text>
-                </View>
-                <View style={styles.info}>
-                    <Text style={{fontSize:30}}>Stats</Text>
-                    <View style={styles.stats}>
-                        <View style={styles.stat}>
-                            <Text>Fuerza</Text>
-                            <Text style={styles.valor}>{personaje.strength}</Text>
-                        </View>
-                        <View style={styles.stat}>
-                            <Text>Agilidad</Text>
-                            <Text style={styles.valor}>{personaje.dexterity}</Text>
-                        </View>
-                        <View style={styles.stat}>
-                            <Text>Constitución</Text>
-                            <Text style={styles.valor}>{personaje.constitution}</Text>
-                        </View>
-                        <View style={styles.stat}>
-                            <Text>Integligencia</Text>
-                            <Text style={styles.valor}>{personaje.intelligence}</Text>
-                        </View>
-                        <View style={styles.stat}>
-                            <Text>Sabiduría</Text>
-                            <Text style={styles.valor}>{personaje.wisdom}</Text>
-                        </View>
-                        <View style={styles.stat}>
-                            <Text>Carisma</Text>
-                            <Text style={styles.valor}>{personaje.charisma}</Text>
-                        </View>
-                    </View>
-                </View>
-            </View>
-            <Text style={{fontSize:30, textAlign:'center'}}>Backstory</Text>
-            <Text style={{padding:20}}>
+  <Document>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.personajeCard}>
+          <Text style={{marginBottom: 10,}}>{personaje.fullname}</Text>
+          <Image style={styles.imagen} src={getImage(personaje.race, personaje.img)}/>
+          <Text style={{marginTop:15}}>Raza: {personaje.race}</Text>
+          <Text style={{marginTop:15}}>Clase: {personaje.class}</Text>
+          <Text style={{marginTop:15}}>Alineación:{personaje.alignment}</Text>
+
+          <View style={styles.stat}>
+            <Text style={styles.valor}>{personaje.strength}</Text>
+            <Text>Fuerza</Text>
+          </View>
+          <View style={styles.stat}>
+              <Text style={styles.valor}>{personaje.dexterity}</Text>
+              <Text>Agilidad</Text>
+          </View>
+          <View style={styles.stat}>
+              <Text style={styles.valor}>{personaje.constitution}</Text>
+              <Text>Constitución</Text>
+          </View>
+          <View style={styles.stat}>
+              <Text style={styles.valor}>{personaje.intelligence}</Text>
+              <Text>Integligencia</Text>
+          </View>
+          <View style={styles.stat}>
+              <Text style={styles.valor}>{personaje.wisdom}</Text>
+              <Text>Sabiduría</Text>
+          </View>
+          <View style={styles.stat}>
+              <Text style={styles.valor}>{personaje.charisma}</Text>
+              <Text>Carisma</Text>
+          </View>
+        </View>
+
+        <View style={styles.backstory}>
+            <Text style={{fontSize:'40px',}}>Backstory</Text>
+            <Text style={{paddingTop:'10px',}}>
             {personaje.biography}
             </Text>
-            </Page>
-        </Document>
+        </View>
+      
+      </Page>
+  </Document>
 );
 
 export default PersonajePDF;
