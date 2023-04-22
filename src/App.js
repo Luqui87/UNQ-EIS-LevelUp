@@ -2,8 +2,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Aventuras from './components/Aventuras/Aventuras';
 import NavBar from './components/NavBar/NavBar';
 import Manuales from './components/Manuales/Manuales';
-import PDFView from './components/PDFView';
+import Personaje from './components/Personaje/Personaje';
 import Personajes from './components/Characters/Personajes';
+import PDFView from './components/PDFView';
 import './App.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           />
           <Route path='/aventuras/:aventura_title' element={<PDFView />} />
           <Route path='/manuales/:manual_title' element={<PDFView />} />
+          <Route path='mis personajes/:owner/:personaje' element={<Personaje/>} />
         </Routes>
       </BrowserRouter>
     </>
