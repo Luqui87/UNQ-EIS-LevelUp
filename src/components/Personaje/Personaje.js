@@ -31,7 +31,7 @@ export const Personaje = () => {
         <img
           src={loading_icon}
           alt='cargando'
-          style={{ maxWidth: '20em', margin: '0 45%',}}
+          style={{ maxWidth: '20em',alignSelf:'center',}}
         />
        : 
       <div className="container-personaje">
@@ -41,7 +41,7 @@ export const Personaje = () => {
           <span>{personaje.fullname}</span>
           <img sr
           alt='Portada del manual de monstruos'
-          src={getImage(personaje.race,personaje.img)}/>
+          src={getImage(personaje.img)}/>
         
           <div className="info">
             <p>Raza: {personaje.race}</p>
