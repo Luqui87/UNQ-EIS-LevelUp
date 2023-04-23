@@ -1,7 +1,10 @@
-export const getImage = (race, img) => {
+import icons from "../../resources/character/race_icons/icons";
+
+export const getImage = (img) => {
     var image;
     try {
-      image = require(`../../resources/character/race_icons/${race}/${img}`);
+      const result = icons.filter((icon) => icon.name === img);
+      return result[0].img;
     } catch (error) {
       image = require(`../../resources/d20.png`);
     }
