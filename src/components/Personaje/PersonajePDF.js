@@ -51,7 +51,7 @@ const PersonajePDF = ({personaje}) => (
       <Page size="A4" style={styles.page}>
         <View style={styles.personajeCard}>
           <Text style={{marginBottom: 10,}}>{personaje.fullname}</Text>
-          <Image style={styles.imagen} src={getImage(personaje.race, personaje.img)}/>
+          <Image style={styles.imagen} src={getImage(personaje.img)}/>
           <Text style={{marginTop:15}}>Raza: {personaje.race}</Text>
           <Text style={{marginTop:15}}>Clase: {personaje.class}</Text>
           <Text style={{marginTop:15}}>Alineación:{personaje.alignment}</Text>
