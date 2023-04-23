@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { getCharacter } from '../../Api';
 import { useLocation } from 'react-router-dom';
 import { getImage } from '../Personaje/functions';
-import loading_icon from '../../resources/loading.gif';
+import Loading from '../Loading';
 
 export const Personaje = () => {
   const [personaje, setPersonaje] = useState([])
@@ -21,18 +21,12 @@ export const Personaje = () => {
       setStats([{tipo:'Fuerza', valor:character.strength},{tipo:'Agilidad', valor:character.dexterity},{tipo:'Constitución', valor:character.constitution},{tipo:'Inteligencia', valor:character.intelligence},{tipo:'Sabiduría', valor:character.wisdom},{tipo:'Carisma', valor:character.charisma}])
       setLoading(false)
     })
-  },[])
-
-
+  })
  
   return (
     <main>
       {loading ? 
-        <img
-          src={loading_icon}
-          alt='cargando'
-          style={{ maxWidth: '20em',alignSelf:'center',}}
-        />
+        <Loading />
        : 
       <div className="container-personaje">
 
