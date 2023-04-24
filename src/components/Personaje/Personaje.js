@@ -21,7 +21,17 @@ export const Personaje = () => {
       setStats([{tipo:'Fuerza', valor:character.strength},{tipo:'Agilidad', valor:character.dexterity},{tipo:'Constitución', valor:character.constitution},{tipo:'Inteligencia', valor:character.intelligence},{tipo:'Sabiduría', valor:character.wisdom},{tipo:'Carisma', valor:character.charisma}])
       setLoading(false)
     })
-  })
+  },[])
+
+
+  function renderBackstory(){
+    var backstory = personaje.biography.split("\n")
+    return(
+      <>
+        {backstory.map((paragraph,index) => <p key={index}>{paragraph}</p>)}
+      </>
+    )
+  }
  
   return (
     <main>
@@ -62,9 +72,10 @@ export const Personaje = () => {
       
       <div className="backstory">
           <h2>Backstory</h2>
-          <pre>
-            {personaje.biography}
-          </pre>
+          {renderBackstory()}
+          {/* <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis molestie nisl, et elementum eros dapibus nec. Maecenas ac orci luctus turpis fermentum placerat nec quis nunc. Praesent tempor erat vel erat feugiat, suscipit suscipit arcu condimentum. Nulla aliquam, sem nec rhoncus lacinia, dolor nibh molestie nisl, vitae lobortis lectus dolor a nulla. Integer fermentum mattis ipsum vel suscipit. Donec gravida nisi ut mollis tempus. Sed non bibendum mi, ornare laoreet neque. Nam aliquet mi metus, sit amet fermentum turpis vehicula sit amet. Nullam blandit magna purus. Donec viverra tempus metus sed convallis. Morbi nec metus ornare, pretium massa at, scelerisque quam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse condimentum, sem a cursus auctor, nulla dui pellentesque nunc, non rutrum enim urna quis magna. Maecenas egestas sem vel leo feugiat ornare ac eget nisl.
+          </p> */}
       </div>
 
     </div>
