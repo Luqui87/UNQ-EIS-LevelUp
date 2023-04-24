@@ -44,8 +44,8 @@
     border: 0.15em solid grey;
 }
 
-.character_card :not(:first-child) {
-    margin-top: 0.8em;
+.character_card {
+    margin-bottom: 0.8em;
 }
 
 .character_card img {
