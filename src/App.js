@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBar buttons={['Registro','Aventuras', 'Manuales', 'Personajes']} />
+        <NavBar buttons={['Aventuras', 'Manuales', 'Personajes']} />
         <Routes>
           <Route path='/' element={<></>} />
           <Route path='/registro' element={<Registro/>} />
