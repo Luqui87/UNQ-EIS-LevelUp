@@ -8,11 +8,48 @@ export const Registro = () => {
     password: '',
     email: '',
     img: '',
+    confirmPassword: ''
   })
+
+  const [error, setError] = useState({
+    username: '',
+    password: '',
+    email:'',
+    confirmPassword: ''
+  })
+
+  const onInputChange = e => {
+    const { name, value } = e.target;
+    setDatosDelUsuario(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    validateInput(e);
+  }
+   
+  const validateInput = e => {
+    let { name, value } = e.target;
+    setError(prev => {
+      const stateObj = { ...prev, [name]: "" };
+   
+      switch (name) {
+        // TODO: Agregar validaciones para username, email y password.
+         case "confirmPassword":
+          if (datosDelUsuario.password && value !== datosDelUsuario.password) {
+            stateObj[name] = "Las contraseñas no coinciden.";
+          }
+          break;
+        default:
+          break;
+      }
+   
+      return stateObj;
+    });
+  }
 
   return (
     <main>
-      <div className='form'>
+      <form className='form'>
         <div className='form-body'>
           <h2>Creación de cuenta</h2>
           <div className='usernameform'>
@@ -22,6 +59,7 @@ export const Registro = () => {
             <input
               className='form__input'
               type='text'
+              name='username'
               id='usernameform'
               placeholder='Ingresar nombre de usuario'
               onChange={event => {
@@ -29,8 +67,8 @@ export const Registro = () => {
                   ...datosPrevios,
                   username: event.target.value,
                 }))
-                console.log('datos: ', datosDelUsuario)
               }}
+              required
             />
           </div>
           <div className='email'>
@@ -39,6 +77,7 @@ export const Registro = () => {
             </label>
             <input
               type='email'
+              name= 'email'
               id='email'
               className='form__input'
               placeholder='Ingresar email'
@@ -47,8 +86,8 @@ export const Registro = () => {
                   ...datosPrevios,
                   email: event.target.value,
                 }))
-                console.log('datos: ', datosDelUsuario)
               }}
+              required
             />
           </div>
           <div className='password'>
@@ -57,16 +96,18 @@ export const Registro = () => {
             </label>
             <input
               className='form__input'
+              name="password"
               type='password'
               id='password'
               placeholder='Ingresar contraseña'
+              value={datosDelUsuario.password}
               onChange={event => {
                 setDatosDelUsuario(datosPrevios => ({
                   ...datosPrevios,
                   password: event.target.value,
                 }))
-                console.log('datos: ', datosDelUsuario)
               }}
+              required
             />
           </div>
           <div className='confirm-password'>
@@ -75,13 +116,20 @@ export const Registro = () => {
             </label>
             <input
               className='form__input'
+              name="confirmPassword"
               type='password'
               id='confirmPassword'
               placeholder='Confirmar contraseña'
+              value={datosDelUsuario.confirmPassword}
+              onChange={onInputChange}
+              onBlur={validateInput}
+              required
             />
+            <br></br>
+            {error.confirmPassword && <span className='err'>{error.confirmPassword}</span>}
           </div>
         </div>
-        <div class='footer'>
+        <div class='send'>
           <button
             type='submit'
             class='btn'
@@ -91,7 +139,7 @@ export const Registro = () => {
             Registrar cuenta
           </button>
         </div>
-      </div>
+      </form>
     </main>
   )
 }

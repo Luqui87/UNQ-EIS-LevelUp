@@ -26,7 +26,7 @@
     width: 60%;
 }
 
-.footer{
+.send{
     text-align: center;
 }
 
@@ -39,4 +39,9 @@
     padding: 1em 1em;
     cursor: pointer;
     margin: 0 1em;
+}
+
+.err{
+    color: #b12222;
+    font-variant:small-caps;
 }
