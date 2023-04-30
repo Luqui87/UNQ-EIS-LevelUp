@@ -49,7 +49,6 @@ export const Registro = () => {
 
   return (
     <main>
-      <form className='form'>
         <div className='form-body'>
           <h2>Creación de cuenta</h2>
           <div className='usernameform'>
@@ -139,7 +138,6 @@ export const Registro = () => {
             Registrar cuenta
           </button>
         </div>
-      </form>
     </main>
   )
 }
