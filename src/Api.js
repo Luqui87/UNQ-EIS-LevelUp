@@ -7,7 +7,10 @@ export const getCharacter = (owner, id) => {
 };
 
 export const signin = async (user) => {
-  return await fetch(`http://localhost:3010/auth/signin`, {
+  // const { email } = user.email
+  // const encodedEmail = encodeURIComponent(email)
+
+  const data = await fetch(`http://localhost:3010/auth/signin`, {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
@@ -17,4 +20,6 @@ export const signin = async (user) => {
     .then((response) => response.json())
     .then((data) => console.log(data))
     .catch((error) => console.log(error));
+
+  return data
 };
