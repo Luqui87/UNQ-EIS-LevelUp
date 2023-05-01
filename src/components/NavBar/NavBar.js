@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import question from '../../resources/question_mark.jpg'
 import './navbar.css'
+import IniciarSesion from '../../components/Cuenta/IniciarSesion'
+
+
 
 export const NavBar = ({ buttons }) => {
   const style = { color: 'white', textDecoration: 'none' }
@@ -11,6 +14,8 @@ export const NavBar = ({ buttons }) => {
           <img src={question} alt='perfil' />
           <span>Invitado</span>
           <div>
+            <IniciarSesion />
+          <br />
             <Link to='/registro'>Registrar Cuenta</Link>
           </div>
         </div>
