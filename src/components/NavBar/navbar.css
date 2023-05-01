@@ -39,7 +39,7 @@ header {
 
 .menu > div {
     position: absolute;
-    visibility: hidden;
+    visibility: visible;
     background-color: #212121;
     width: 15em;
     height: 20em;
