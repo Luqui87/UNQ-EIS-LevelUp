@@ -1,12 +1,25 @@
-import { Link } from 'react-router-dom';
-import './navbar.css';
+import { Link } from 'react-router-dom'
+import question from '../../resources/question_mark.jpg'
+import './navbar.css'
+import IniciarSesion from '../../components/Cuenta/IniciarSesion'
+
+
 
 export const NavBar = ({ buttons }) => {
-  const style = { color: 'white', textDecoration: 'none' };
+  const style = { color: 'white', textDecoration: 'none' }
   return (
     <header>
       <nav className='navbar'>
-        <ul className='menu'>
+        <div className='menu'>
+          <img src={question} alt='perfil' />
+          <span>Invitado</span>
+          <div>
+            <IniciarSesion />
+          <br />
+            <Link to='/registro'>Registrar Cuenta</Link>
+          </div>
+        </div>
+        <ul>
           {buttons?.map((button, index) => (
             <li key={`${index}-${button}`}>
               <Link to={`/${button.toLowerCase()}`} style={style}>
@@ -17,7 +30,7 @@ export const NavBar = ({ buttons }) => {
         </ul>
       </nav>
     </header>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

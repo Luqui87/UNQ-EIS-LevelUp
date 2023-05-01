@@ -14,9 +14,9 @@ Proyecto Level Up para la materia Elementos de la Ingenieria de Software de la U
 
 | Nombre                | Usuario de Github |
 | --------------------- | ----------------- |
-| Nicolas Garili        |                   |
-| Ivana Provvidenza     |                   |
-| Gonzalez Aduco Matías |                   |
+| Nicolas Garili        | NFGarilli         |
+| Ivana Provvidenza     | ivanapr           |
+| Gonzalez Aduco Matías | matiasaduco       |
 | Lucas Alvarez         | Luqui87           |
 
 ## Product Backlog

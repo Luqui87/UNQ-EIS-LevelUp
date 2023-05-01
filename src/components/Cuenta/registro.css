@@ -1,0 +1,46 @@
+.form{
+    background: #bdc3c7;
+    background: -webkit-linear-gradient(to left, #ef8787, #d7d5d6);
+    background: linear-gradient(to left, #ef8787, #d7d5d6);
+    background-color: white;
+    border-radius: 5px;
+    width: 550px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.form-body{
+    text-align: center;
+}
+
+.form-body > *{
+    padding: 15px;
+}
+
+.form__label{
+    width: 40%;
+}
+
+.form_input{
+    width: 60%;
+}
+
+.send{
+    text-align: center;
+}
+
+#botonRegistro{
+    color: white;
+    background-color: red;
+    font-size: 1em;
+    border: 0;
+    border-radius: 0.1em;
+    padding: 1em 1em;
+    cursor: pointer;
+    margin: 0 1em;
+}
+
+.err{
+    color: #b12222;
+    font-variant:small-caps;
+}
