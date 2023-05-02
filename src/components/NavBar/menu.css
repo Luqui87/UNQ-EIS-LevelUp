@@ -1,0 +1,40 @@
+.menu {
+    width: 15em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.menu:first-child {
+    position: absolute;
+    left: 10em;
+    height: 100%;
+}
+.menu:hover > div {
+    visibility: visible;
+}
+
+.menu > div {
+    position: absolute;
+    visibility: visible;
+    background-color: #212121;
+    width: 15em;
+    height: 20em;
+    top: 3.5em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
+.menu > div > * {
+    color: white;
+}
+
+.menu > span {
+    flex-basis: 35%;
+}
+
+.menu > img {
+    max-width: 3em;
+    border-radius: 50%;
+}
