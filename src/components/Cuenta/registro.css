@@ -1,35 +1,68 @@
 .form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     background: #bdc3c7;
     background: -webkit-linear-gradient(to left, #ef8787, #d7d5d6);
     background: linear-gradient(to left, #ef8787, #d7d5d6);
     background-color: white;
     border-radius: 5px;
-    width: 550px;
-    margin: 20px auto;
-    padding: 20px;
+    width: 55em;
+    height: 35em;
+    margin: 5em auto;
 }
 
-.form-body{
-    text-align: center;
+.form h2 {
+    flex-basis: 100%;
 }
 
-.form-body > *{
-    padding: 15px;
+.form #botonRegistro {
+    flex-basis: 100%;
 }
 
-.form__label{
-    width: 40%;
+.form-body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
-.form_input{
-    width: 60%;
+.form-body span {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    flex-basis: 100%;
+    margin: 0.4em;
 }
 
-.send{
-    text-align: center;
+.form-body label {
+    flex-basis: 50%;
+    font-size: 1.1em;
 }
 
-#botonRegistro{
+.form-body input {
+    flex-basis: 50%;
+}
+
+.form-body span input {
+    display: inline-block;
+    border: 2px solid grey;
+    border-radius: 0.3em;
+    padding: 0.3em;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.1em;
+    color: grey;
+    outline: none;
+}
+
+.btn {
     color: white;
     background-color: red;
     font-size: 1em;

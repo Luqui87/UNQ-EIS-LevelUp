@@ -1,24 +1,17 @@
 import { Link } from 'react-router-dom'
-import question from '../../resources/question_mark.jpg'
 import './navbar.css'
-import IniciarSesion from '../../components/Cuenta/IniciarSesion'
-
-
+import { UnloggedMenu, LoggedMenu } from './Menu'
+import { useContext } from 'react'
+import { AuthContext } from '../AuthContext.js'
 
 export const NavBar = ({ buttons }) => {
   const style = { color: 'white', textDecoration: 'none' }
+  const { token } = useContext(AuthContext)
+
   return (
     <header>
       <nav className='navbar'>
-        <div className='menu'>
-          <img src={question} alt='perfil' />
-          <span>Invitado</span>
-          <div>
-            <IniciarSesion />
-          <br />
-            <Link to='/registro'>Registrar Cuenta</Link>
-          </div>
-        </div>
+        {token ? <LoggedMenu/> : <UnloggedMenu/>}
         <ul>
           {buttons?.map((button, index) => (
             <li key={`${index}-${button}`}>
