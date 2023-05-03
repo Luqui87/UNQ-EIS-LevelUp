@@ -17,7 +17,7 @@
 
 .menu > div {
     position: absolute;
-    visibility: visible;
+    visibility: hidden;
     background-color: #212121;
     width: 15em;
     height: 20em;
