@@ -38,3 +38,12 @@
     max-width: 3em;
     border-radius: 50%;
 }
+
+.btnCerrarSesion {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 1em;
+    font-family: 'MedievalSharp', cursive;
+}

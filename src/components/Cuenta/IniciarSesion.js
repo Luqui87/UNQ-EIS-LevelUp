@@ -13,9 +13,12 @@ export const IniciarSesion = () => {
   })
 
   const send = async () => {
+    if (!datosDelUsuario.username)
+      return setError('Se requiere un usuario válido.')
     const res = await login(datosDelUsuario)
     if (!res.token) return setError(res.message)
 
+    alert(res.message)
     localStorage.setItem('token', res.token)
     setToken(localStorage.getItem('token'))
   }
