@@ -8,7 +8,6 @@ const getImage = (img) => {
 };
 
 export const PersonajeCard = ({ personaje }) => {
-  console.log(personaje.owner)
   return (
     <Link
       to={`./${personaje.owner}/${personaje.id}`}
