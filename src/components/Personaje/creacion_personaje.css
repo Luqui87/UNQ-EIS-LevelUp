@@ -20,7 +20,7 @@
     margin-left: 1em;
 }
 
-.alignments, .races, .classes {
+.alignments, .races, .classes, .stats {
     display: flex;
     flex-wrap: wrap;
     width: 40%;
@@ -30,7 +30,7 @@
     flex-basis: 100%;
 }
 
-.alignments > span {
+.alignments > span, .stats > span {
     flex-basis: 33%;
     margin: 0.7em 0;
 }
@@ -47,11 +47,31 @@
 
 .description {
     border: 1px solid black;
+    min-width: 44.5em;
     min-height: 20em;
     max-height: 20em;
+    margin-bottom: 1em;
     padding: 0.5em;
     line-height: 1.3em;
     overflow: scroll;
     font-family: Arial, Helvetica, sans-serif;
     text-align: start;
+}
+
+.stats > span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats > span > input {
+    border-radius: 50%;
+    width: 4em;
+    height: 4em;
+}
+
+textarea {
+    min-width: 44.5em;
+    min-height: 20em;
 }

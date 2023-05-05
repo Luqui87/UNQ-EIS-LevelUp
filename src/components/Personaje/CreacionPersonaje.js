@@ -91,25 +91,33 @@ export const CreacionPersonaje = () => {
           </ul>
         </div>
       </section>
-      <section>
-        <label>Fuerza</label>
-        <input type='number' />
-        <label>Destreza</label>
-        <input type='number' />
-        <label>Constitución</label>
-        <input type='number' />
-        <label>Inteligencia</label>
-        <input type='number' />
-        <label>Sabiduría</label>
-        <input type='number' />
-        <label>Carisma</label>
-        <input type='number' />
+      <section className='stats'>
+        <span>
+          <label>Fuerza</label>
+          <input type='number' />
+        </span>
+        <span>
+          <label>Destreza</label>
+          <input type='number' />
+        </span>
+        <span>
+          <label>Constitución</label>
+          <input type='number' />
+        </span>
+        <span>
+          <label>Inteligencia</label>
+          <input type='number' />
+        </span>
+        <span>
+          <label>Sabiduría</label>
+          <input type='number' />
+        </span>
+        <span>
+          <label>Carisma</label>
+          <input type='number' />
+        </span>
       </section>
-      <textarea
-        placeholder='Escriba la historia de su personaje...'
-        rows='10'
-        cols='50'
-      />
+      <textarea placeholder='Escriba la historia de su personaje...' />
     </div>
   )
 }
