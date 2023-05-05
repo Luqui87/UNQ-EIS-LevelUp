@@ -6,8 +6,9 @@ import Personajes from './components/Personajes/Personajes'
 import PDFView from './components/PDFView'
 import Personaje from './components/Personaje/Personaje'
 import Registro from './components/Cuenta/Registro'
-import './App.css'
+import CreacionPersonaje from './components/Personaje/CreacionPersonaje'
 import { AuthProvider } from './components/AuthContext'
+import './App.css'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/:tipo/:manual_title' element={<PDFView />} />
           <Route path='/personajes' element={<Personajes />} />
           <Route path='/personajes/:owner/:personaje' element={<Personaje />} />
+          <Route path='/create/character' element={<CreacionPersonaje />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
