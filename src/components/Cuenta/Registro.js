@@ -18,16 +18,21 @@ export const Registro = () => {
   })
 
   useEffect(() => {
-    if(datosDelUsuario.password !== datosDelUsuario.confirmPassword)
-      setError('Las contraseñas no coinciden')
-    else
-      setError('')
+    if (datosDelUsuario.password !== datosDelUsuario.confirmPassword)
+      setError('Las contraseñas no coinciden.')
+    else setError('')
   }, [datosDelUsuario])
 
   const send = async () => {
-    if(error) return
+    if (!datosDelUsuario.username)
+      return setError('Se requiere un nombre de usuario válido.')
+    if (!datosDelUsuario.email.includes('@'))
+      return setError('Debe de ingresar un email válido.')
+    if (!datosDelUsuario.password)
+      return setError('Se requiere una contraseña válida.')
+    if (error) return
     const res = await signin(datosDelUsuario)
-    if(!res.token) return setError(res.message)
+    if (!res.token) return setError(res.message)
 
     alert(res.message)
     localStorage.setItem('token', res.token)
@@ -99,13 +104,16 @@ export const Registro = () => {
             required
           />
           <br></br>
-          <span className='err' style={{ visibility: `${error ? 'visible' : 'hidden'}` }}>
+          <span
+            className='err'
+            style={{ visibility: `${error ? 'visible' : 'hidden'}` }}
+          >
             {error}
           </span>
         </span>
       </div>
       <div>
-        <button type='submit' class='btn' id='botonRegistro' onClick={send}>
+        <button type='submit' className='btn' id='botonRegistro' onClick={send}>
           Registrar cuenta
         </button>
       </div>

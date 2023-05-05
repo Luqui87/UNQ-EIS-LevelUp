@@ -28,7 +28,7 @@ export const LoggedMenu = () => {
       <span>Invitado</span>
       <div>
         <button
-          className='btn'
+          className='btnCerrarSesion'
           onClick={() => {
             setToken('')
             localStorage.setItem('token', '')
