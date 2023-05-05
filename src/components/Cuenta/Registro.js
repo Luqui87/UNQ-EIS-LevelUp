@@ -1,144 +1,115 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { signin } from '../../Api.js'
+import { AuthContext } from '../AuthContext'
+import { useNavigate } from 'react-router-dom'
 import './registro.css'
 
 export const Registro = () => {
+  const { setToken } = useContext(AuthContext)
+  const navigate = useNavigate()
+  const [error, setError] = useState('')
+
   const [datosDelUsuario, setDatosDelUsuario] = useState({
     username: '',
-    password: '',
     email: '',
-    img: '',
-    confirmPassword: ''
-  })
-
-  const [error, setError] = useState({
-    username: '',
     password: '',
-    email:'',
-    confirmPassword: ''
+    confirmPassword: '',
+    img: '',
   })
 
-  const onInputChange = e => {
-    const { name, value } = e.target;
-    setDatosDelUsuario(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    validateInput(e);
-  }
-   
-  const validateInput = e => {
-    let { name, value } = e.target;
-    setError(prev => {
-      const stateObj = { ...prev, [name]: "" };
-   
-      switch (name) {
-        // TODO: Agregar validaciones para username, email y password.
-         case "confirmPassword":
-          if (datosDelUsuario.password && value !== datosDelUsuario.password) {
-            stateObj[name] = "Las contraseñas no coinciden.";
-          }
-          break;
-        default:
-          break;
-      }
-   
-      return stateObj;
-    });
+  useEffect(() => {
+    if(datosDelUsuario.password !== datosDelUsuario.confirmPassword)
+      setError('Las contraseñas no coinciden')
+    else
+      setError('')
+  }, [datosDelUsuario])
+
+  const send = async () => {
+    if(error) return
+    const res = await signin(datosDelUsuario)
+    if(!res.token) return setError(res.message)
+
+    alert(res.message)
+    localStorage.setItem('token', res.token)
+    setToken(localStorage.getItem('token'))
+    navigate('/personajes')
   }
 
   return (
-    <main>
-        <div className='form-body'>
-          <h2>Creación de cuenta</h2>
-          <div className='usernameform'>
-            <label className='form__label' for='usernameform'>
-              Nombre de Usuario{' '}
-            </label>
-            <input
-              className='form__input'
-              type='text'
-              name='username'
-              id='usernameform'
-              placeholder='Ingresar nombre de usuario'
-              onChange={event => {
-                setDatosDelUsuario(datosPrevios => ({
-                  ...datosPrevios,
-                  username: event.target.value,
-                }))
-              }}
-              required
-            />
-          </div>
-          <div className='email'>
-            <label className='form__label' for='email'>
-              Email{' '}
-            </label>
-            <input
-              type='email'
-              name= 'email'
-              id='email'
-              className='form__input'
-              placeholder='Ingresar email'
-              onChange={event => {
-                setDatosDelUsuario(datosPrevios => ({
-                  ...datosPrevios,
-                  email: event.target.value,
-                }))
-              }}
-              required
-            />
-          </div>
-          <div className='password'>
-            <label className='form__label' for='password'>
-              Contraseña{' '}
-            </label>
-            <input
-              className='form__input'
-              name="password"
-              type='password'
-              id='password'
-              placeholder='Ingresar contraseña'
-              value={datosDelUsuario.password}
-              onChange={event => {
-                setDatosDelUsuario(datosPrevios => ({
-                  ...datosPrevios,
-                  password: event.target.value,
-                }))
-              }}
-              required
-            />
-          </div>
-          <div className='confirm-password'>
-            <label className='form__label' for='confirmPassword'>
-              Confirmar contraseña{' '}
-            </label>
-            <input
-              className='form__input'
-              name="confirmPassword"
-              type='password'
-              id='confirmPassword'
-              placeholder='Confirmar contraseña'
-              value={datosDelUsuario.confirmPassword}
-              onChange={onInputChange}
-              onBlur={validateInput}
-              required
-            />
-            <br></br>
-            {error.confirmPassword && <span className='err'>{error.confirmPassword}</span>}
-          </div>
-        </div>
-        <div class='send'>
-          <button
-            type='submit'
-            class='btn'
-            id='botonRegistro'
-            onClick={() => signin(datosDelUsuario)}
-          >
-            Registrar cuenta
-          </button>
-        </div>
-    </main>
+    <div className='form'>
+      <h1>Creación de cuenta</h1>
+      <div className='form-body'>
+        <span>
+          <label>Nombre de Usuario</label>
+          <input
+            type='text'
+            name='username'
+            placeholder='Ingresar nombre de usuario'
+            onChange={event => {
+              setDatosDelUsuario(datosPrevios => ({
+                ...datosPrevios,
+                username: event.target.value,
+              }))
+            }}
+            required
+          />
+        </span>
+        <span>
+          <label>Email</label>
+          <input
+            type='email'
+            name='email'
+            placeholder='Ingresar email'
+            onChange={event => {
+              setDatosDelUsuario(datosPrevios => ({
+                ...datosPrevios,
+                email: event.target.value,
+              }))
+            }}
+            required
+          />
+        </span>
+        <span>
+          <label>Contraseña</label>
+          <input
+            name='password'
+            type='password'
+            placeholder='Ingresar contraseña'
+            onChange={event => {
+              setDatosDelUsuario(datosPrevios => ({
+                ...datosPrevios,
+                password: event.target.value,
+              }))
+            }}
+            required
+          />
+        </span>
+        <span>
+          <label>Confirmar contraseña</label>
+          <input
+            name='confirmPassword'
+            type='password'
+            placeholder='Confirmar contraseña'
+            onChange={event => {
+              setDatosDelUsuario(datosPrevios => ({
+                ...datosPrevios,
+                confirmPassword: event.target.value,
+              }))
+            }}
+            required
+          />
+          <br></br>
+          <span className='err' style={{ visibility: `${error ? 'visible' : 'hidden'}` }}>
+            {error}
+          </span>
+        </span>
+      </div>
+      <div>
+        <button type='submit' class='btn' id='botonRegistro' onClick={send}>
+          Registrar cuenta
+        </button>
+      </div>
+    </div>
   )
 }
 
