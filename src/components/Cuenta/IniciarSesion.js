@@ -4,7 +4,7 @@ import './IniciarSesion.css'
 import { AuthContext } from '../AuthContext'
 
 export const IniciarSesion = () => {
-  const { setToken } = useContext(AuthContext)
+  const { setToken, setUsername } = useContext(AuthContext)
   const [error, setError] = useState('')
 
   const [datosDelUsuario, setDatosDelUsuario] = useState({
@@ -17,7 +17,9 @@ export const IniciarSesion = () => {
     if (!res.token) return setError(res.message)
 
     localStorage.setItem('token', res.token)
+    localStorage.setItem('username', datosDelUsuario.username)
     setToken(localStorage.getItem('token'))
+    setUsername(localStorage.getItem('username'))
   }
 
   return (

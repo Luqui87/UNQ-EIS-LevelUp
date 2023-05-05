@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import './registro.css'
 
 export const Registro = () => {
-  const { setToken } = useContext(AuthContext)
+  const { setToken, setUsername } = useContext(AuthContext)
   const navigate = useNavigate()
   const [error, setError] = useState('')
 
@@ -31,7 +31,9 @@ export const Registro = () => {
 
     alert(res.message)
     localStorage.setItem('token', res.token)
+    localStorage.setItem('username', datosDelUsuario.username)
     setToken(localStorage.getItem('token'))
+    setUsername(datosDelUsuario.username)
     navigate('/personajes')
   }
 
