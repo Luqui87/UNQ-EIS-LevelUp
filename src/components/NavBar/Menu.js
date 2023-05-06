@@ -20,12 +20,12 @@ export const UnloggedMenu = () => {
 }
 
 export const LoggedMenu = () => {
-  const { setToken } = useContext(AuthContext)
+  const { setToken, username } = useContext(AuthContext)
 
   return (
     <div className='menu'>
       <img src={question} alt='perfil' />
-      <span>Invitado</span>
+      <span>{username}</span>
       <div>
         <button
           className='btnCerrarSesion'
