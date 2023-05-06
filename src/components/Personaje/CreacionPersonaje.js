@@ -1,17 +1,19 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import races from '../../resources/character/races'
 import classes from '../../resources/character/classes'
 import aligments from '../../resources/character/alignments'
-import './creacion_personaje.css'
 import { useNavigate } from 'react-router-dom'
 import { createCharacter } from '../../Api'
+import { AuthContext } from '../AuthContext'
+import './creacion_personaje.css'
 
 export const CreacionPersonaje = () => {
+  const { username } = useContext(AuthContext)
   const navigate = useNavigate()
   const [error, setError] = useState('')
   const [character, setCharacter] = useState({
     fullname: '',
-    owner: 'geek',
+    owner: username,
     race: '',
     class: '',
     level: '0',
