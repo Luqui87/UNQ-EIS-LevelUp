@@ -7,7 +7,7 @@ export const getCharacter = (owner, id) => {
 }
 
 export const signin = async user => {
-  const data = await fetch(`http://localhost:3010/auth/signin`, {
+  const data = await fetch('http://localhost:3010/auth/signin', {
     method: 'POST',
     body: JSON.stringify(user),
     headers: {
@@ -21,9 +21,23 @@ export const signin = async user => {
 }
 
 export const login = async user => {
-  var data = await fetch(`http://localhost:3010/auth/login`, {
+  const data = await fetch('http://localhost:3010/auth/login', {
     method: 'POST',
     body: JSON.stringify(user),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error))
+
+  return data
+}
+
+export const createCharacter = async character => {
+  const data = await fetch('http://localhost:3010/characters/create', {
+    method: 'POST',
+    body: JSON.stringify(character),
     headers: {
       'Content-Type': 'application/json',
     },
