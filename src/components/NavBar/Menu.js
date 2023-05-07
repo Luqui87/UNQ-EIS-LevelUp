@@ -20,7 +20,7 @@ export const UnloggedMenu = () => {
 }
 
 export const LoggedMenu = () => {
-  const { setToken, username } = useContext(AuthContext)
+  const { setToken, username, setUsername } = useContext(AuthContext)
 
   return (
     <div className='menu'>
@@ -32,6 +32,8 @@ export const LoggedMenu = () => {
           onClick={() => {
             setToken('')
             localStorage.setItem('token', '')
+            setUsername('')
+            localStorage.setItem('username', '')
           }}
         >
           Cerrar Sesión

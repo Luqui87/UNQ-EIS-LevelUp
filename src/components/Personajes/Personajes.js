@@ -5,13 +5,14 @@ import PersonajeCard from './PersonajeCard.js'
 import CharacterNotFound from './CharacterNotFound'
 import Loading from '../Loading'
 import { AuthContext } from '../AuthContext'
+import { Link } from 'react-router-dom';
 
 export const Personajes = () => {
   const [myChars, setMyChars] = useState([{}])
   const [defaultCharacters, setDefaultCharacters] = useState([{}])
   const [loading, setLoading] = useState(true)
   const [myCharsTab, setMyCharsTab] = useState(true)
-  const { username } = useContext(AuthContext)
+  const { username, token } = useContext(AuthContext)
 
   useEffect(() => {
     fetch(`http://localhost:3010/characters/${username}`, { method: 'GET' })
@@ -57,15 +58,20 @@ export const Personajes = () => {
                 return <PersonajeCard personaje={personaje} />
               })
             ) : (
-              <CharacterNotFound />
+              !token ? <div> 'Debes iniciar sesión' </div>
+              : <CharacterNotFound />
             ))}
+
           {!myCharsTab &&
             defaultCharacters.map(personaje => {
               return <PersonajeCard personaje={personaje} />
             })}
         </div>
       )}
+       {token &&
+        <Link to={`/create/character`} style={{display:'block', margin:'0 auto', textAlign:'center', width:'12em'}} className='btn'> Crear personaje nuevo </Link>}
     </>
+
   )
 }
 

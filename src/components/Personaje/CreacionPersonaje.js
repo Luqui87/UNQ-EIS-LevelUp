@@ -180,7 +180,7 @@ export const CreacionPersonaje = () => {
           </ul>
         </div>
       </section>
-      <section className='stats'>
+      <section className='stats2'>
         <span>
           <label>Fuerza</label>
           <input

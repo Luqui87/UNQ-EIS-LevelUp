@@ -20,7 +20,7 @@
     margin-left: 1em;
 }
 
-.alignments, .races, .classes, .stats {
+.alignments, .races, .classes, .stats2 {
     display: flex;
     flex-wrap: wrap;
     width: 40%;
@@ -30,7 +30,7 @@
     flex-basis: 100%;
 }
 
-.alignments > span, .stats > span {
+.alignments > span, .stats2 > span {
     flex-basis: 33%;
     margin: 0.7em 0;
 }
@@ -58,14 +58,14 @@
     text-align: start;
 }
 
-.stats > span {
+.stats2 > span {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.stats > span > input {
+.stats2 > span > input {
     border-radius: 50%;
     width: 4em;
     height: 4em;
