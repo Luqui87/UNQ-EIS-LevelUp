@@ -1,18 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
-export const CharacterNotFound = () => {
+export const CharacterNotFound = ({ link, title, description }) => {
   return (
-    <Link to={`/create/character`} className='character_card'>
+    <Link to={link} className='character_card'>
       <span>
         <div>
-          <b>No tienes personajes creados aún {':('}</b>
+          <b>{title}</b>
         </div>
-        <i className='biography'>
-          Haga click y lo llevaremos a la creación de personajes!
-        </i>
+        <i className='biography'>{description}</i>
       </span>
     </Link>
-  );
-};
+  )
+}
 
-export default CharacterNotFound;
+export default CharacterNotFound
