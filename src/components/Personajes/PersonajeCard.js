@@ -4,7 +4,7 @@ import blank from '../../resources/question_mark.jpg';
 
 const getImage = (img) => {
   const result = icons.filter((icon) => icon.name === img);
-  return result[0].img;
+  return result[0]?.img;
 };
 
 export const PersonajeCard = ({ personaje }) => {

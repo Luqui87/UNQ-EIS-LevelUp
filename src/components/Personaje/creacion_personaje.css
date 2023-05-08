@@ -36,8 +36,29 @@
 }
 
 .races > span {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 70%;
+}
+
+.races > span > span {
     flex-basis: 25%;
     margin: 0.7em 0;
+}
+
+.portrait {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 30%;
+}
+
+.portrait > img {
+    flex-basis: 100%;
+    max-width: 220px;
+    min-height: 220px;
+    max-height: 220px;
 }
 
 .classes > span {
@@ -50,7 +71,8 @@
     min-width: 44.5em;
     min-height: 20em;
     max-height: 20em;
-    margin-bottom: 1em;
+    margin-top: 0.9em;
+    margin-bottom: 1.1em;
     padding: 0.5em;
     line-height: 1.3em;
     overflow: scroll;

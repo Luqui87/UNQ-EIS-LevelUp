@@ -1,15 +1,19 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import races from '../../resources/character/races'
 import classes from '../../resources/character/classes'
 import aligments from '../../resources/character/alignments'
 import { useNavigate } from 'react-router-dom'
 import { createCharacter } from '../../Api'
 import { AuthContext } from '../AuthContext'
+import icons from '../../resources/character/race_icons/icons'
 import './creacion_personaje.css'
 
 export const CreacionPersonaje = () => {
-  const { username } = useContext(AuthContext)
   const navigate = useNavigate()
+  const { username } = useContext(AuthContext)
+  const [className, setClassName] = useState('')
+  const [gender, setGender] = useState('')
+  const [img, setImage] = useState()
   const [error, setError] = useState('')
   const [character, setCharacter] = useState({
     fullname: '',
@@ -27,6 +31,12 @@ export const CreacionPersonaje = () => {
     biography: '',
     img: '',
   })
+
+  useEffect(() => {
+    const i = icons.filter(img => img.name === className + '_' + gender)[0]
+    i ? setImage(i.img) : setImage('nothing')
+    setCharacter(char => ({...char, img: className + '_' + gender}))
+  }, [className, gender])
 
   const send = async () => {
     if (!character.fullname)
@@ -112,33 +122,54 @@ export const CreacionPersonaje = () => {
       </section>
       <section className='races'>
         <h2>Razas</h2>
-        {races.map(race => {
-          return (
-            <span>
-              <input
-                type='radio'
-                value={race.value}
-                checked={character.race === race.value}
-                onChange={event =>
-                  setCharacter(char => ({
-                    ...char,
-                    race: event.target.value,
-                  }))
-                }
-              />
-              <label
-                onClick={() =>
-                  setCharacter(char => ({
-                    ...char,
-                    race: race.value,
-                  }))
-                }
-              >
-                {race.name}
-              </label>
-            </span>
-          )
-        })}
+        <div className='portrait'>
+          <img src={img} alt='imagen de raza'/>
+          <input
+            type='radio'
+            value='m'
+            checked={gender === 'm'}
+            onChange={event => setGender(event.target.value)}
+          />
+          <label onClick={() => setGender('m')}>Másculino</label>
+          <input
+            type='radio'
+            value='f'
+            checked={gender === 'f'}
+            onChange={event => setGender(event.target.value)}
+          />
+          <label onClick={() => setGender('f')}>Femenino</label>
+        </div>
+        <span>
+          {races.map(race => {
+            return (
+              <span>
+                <input
+                  type='radio'
+                  value={race.value}
+                  checked={character.race === race.value}
+                  onChange={event => {
+                    setClassName(race.value)
+                    setCharacter(char => ({
+                      ...char,
+                      race: event.target.value,
+                    }))
+                  }}
+                />
+                <label
+                  onClick={() => {
+                    setClassName(race.value)
+                    setCharacter(char => ({
+                      ...char,
+                      race: race.value,
+                    }))
+                  }}
+                >
+                  {race.name}
+                </label>
+              </span>
+            )
+          })}
+        </span>
       </section>
       <section className='classes'>
         <h2>Clases</h2>
