@@ -10,6 +10,7 @@ export const CharacterNotFound = ({ link, title, description }) => {
         <i className='biography'>{description}</i>
       </span>
     </Link>
+    
   )
 }
 

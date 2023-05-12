@@ -24,6 +24,7 @@ function App() {
           <Route path='/personajes' element={<Personajes />} />
           <Route path='/personajes/:owner/:personaje' element={<Personaje />} />
           <Route path='/create/character' element={<CreacionPersonaje />} />
+          <Route path='/personajes/:owner/:character/edit' element={<CreacionPersonaje />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

@@ -25,6 +25,7 @@ export const PersonajeCard = ({ personaje }) => {
         <i className='biography'>"{personaje.biography}"</i>
       </span>
     </Link>
+    
   );
 };
 

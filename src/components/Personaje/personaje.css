@@ -60,15 +60,22 @@
     font-size: 1.2em;
 }
 
-.botonPDF {
+.botones button {
     color: white;
-    background-color: red;
+    background-color: #FF3737;
     font-size: 1em;
     border: 0;
     border-radius: 0.2em;
     padding: 0.9em 2.7em;
     cursor: pointer;
     margin: 0 2em;
+}
+
+.botones{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
 }
 
 .stats {

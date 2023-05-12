@@ -1,11 +1,16 @@
 .characters {
     display: flex;
     flex-wrap: wrap;
-    width: 48em;
+    width: 50em;
     margin: 5em auto;
 }
 
-.characters button {
+.select {
+    display: flex;
+    width: 100%;
+}
+
+.characters .select button {
     flex-basis: 25%;
     height: 3em;
     font-weight: bold;
@@ -19,7 +24,7 @@
     cursor: pointer;
 }
 
-.characters button.active {
+.characters .select button.active {
     flex-basis: 30%;
     transform: scaleY(1.15);
     transform-origin: bottom;
@@ -69,4 +74,27 @@
     -webkit-line-clamp: 3;
     line-height: 1.2em;
     max-height: 3.6em;
+}
+
+.characterRow{
+    display: flex;
+    width: 100%;
+}
+
+.charButtons{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8em;
+    width: 3.5em;
+    padding: 0 0.5em;
+}
+
+.edit{
+    color: white;
+    background-color: #FF3737;
+    border: none;
+    border-radius: 5px;
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
 }
