@@ -62,3 +62,16 @@ export const editCharacter = async character => {
 
   return data
 }
+
+export const deleteCharacter = async id => {
+  const data = await fetch(`${API_URL}/characters/delete/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error))
+
+  return data
+}

@@ -39,7 +39,6 @@ export const CreacionPersonaje = () => {
     if (path[4] == "edit"){
       getCharacter(path[2],path[3]).then(personaje =>{
         setCharacter(personaje)
-        console.log(personaje)
       })
       setButton("Editar Personaje")
       

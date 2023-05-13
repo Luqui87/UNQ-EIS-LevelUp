@@ -83,10 +83,13 @@
 
 .charButtons{
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 0.8em;
     width: 3.5em;
     padding: 0 0.5em;
+    gap: 1em;
+    margin-top: 2em;
 }
 
 .edit{

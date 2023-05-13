@@ -2,12 +2,13 @@ import { PDFDownloadLink } from '@react-pdf/renderer'
 import './personaje.css'
 import PersonajePDF from './PersonajePDF'
 import { useEffect, useState } from 'react'
-import { getCharacter } from '../../Api'
-import { Link, useLocation } from 'react-router-dom'
+import { deleteCharacter, getCharacter } from '../../Api'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { getImage } from '../Personaje/functions'
 import Loading from '../Loading'
 
 export const Personaje = () => {
+  const navigate = useNavigate()
   const [personaje, setPersonaje] = useState([])
   const [loading, setLoading] = useState(true)
   const [stats, setStats] = useState([])
@@ -28,6 +29,18 @@ export const Personaje = () => {
       setLoading(false)
     })
   },[])
+
+  async function confirm() {
+    const res = window.confirm(`Quieres eliminar a ${personaje.fullname}`)
+    if (res) {
+      const res = await deleteCharacter(personaje.id)
+      alert(res.message)
+      navigate('/personajes');
+    }
+    else {
+      alert('Cancelado')
+    }
+  }
 
   function renderBackstory() {
     var backstory = personaje.biography.split('\n')
@@ -74,6 +87,7 @@ export const Personaje = () => {
                 <Link to={'./edit'}>
                   <button >Editar</button>
                 </Link>
+                <button onClick={() => confirm()} >Eliminar</button>
               </div>
 
 

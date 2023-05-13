@@ -68,12 +68,11 @@
     border-radius: 0.2em;
     padding: 0.9em 2.7em;
     cursor: pointer;
-    margin: 0 2em;
 }
 
 .botones{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 1em;
     align-items: center;
 }
