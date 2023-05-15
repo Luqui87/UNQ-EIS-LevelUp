@@ -2,12 +2,13 @@ import { PDFDownloadLink } from '@react-pdf/renderer'
 import './personaje.css'
 import PersonajePDF from './PersonajePDF'
 import { useEffect, useState } from 'react'
-import { getCharacter } from '../../Api'
-import { useLocation } from 'react-router-dom'
+import { deleteCharacter, getCharacter } from '../../Api'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { getImage } from '../Personaje/functions'
 import Loading from '../Loading'
 
 export const Personaje = () => {
+  const navigate = useNavigate()
   const [personaje, setPersonaje] = useState([])
   const [loading, setLoading] = useState(true)
   const [stats, setStats] = useState([])
@@ -27,7 +28,19 @@ export const Personaje = () => {
       ])
       setLoading(false)
     })
-  })
+  },[])
+
+  async function confirm() {
+    const res = window.confirm(`Quieres eliminar a ${personaje.fullname}`)
+    if (res) {
+      const res = await deleteCharacter(personaje.id)
+      alert(res.message)
+      navigate('/personajes');
+    }
+    else {
+      alert('Cancelado')
+    }
+  }
 
   function renderBackstory() {
     var backstory = personaje.biography.split('\n')
@@ -56,18 +69,29 @@ export const Personaje = () => {
               />
 
               <div className='info'>
+                <p>Nivel: {personaje.level}</p>
                 <p>Raza: {personaje.race}</p>
                 <p>Clase: {personaje.class}</p>
                 <p>Alineación: {personaje.alignment}</p>
               </div>
             </div>
-            <PDFDownloadLink
-              document={<PersonajePDF personaje={personaje} />}
-              fileName={personaje.fullname}
-            >
-              <button className='botonPDF'>Descargar</button>
-            </PDFDownloadLink>
-          </div>
+
+              <div className='botones'>
+                <PDFDownloadLink
+                  document={<PersonajePDF personaje={personaje} />}
+                  fileName={personaje.fullname}
+                >
+                  <button >Descargar</button>
+                </PDFDownloadLink>
+
+                <Link to={'./edit'}>
+                  <button >Editar</button>
+                </Link>
+                <button onClick={() => confirm()} >Eliminar</button>
+              </div>
+
+
+            </div>
 
           <div className='stats'>
             <h2>Stats</h2>
@@ -84,9 +108,6 @@ export const Personaje = () => {
           <div className='backstory'>
             <h2>Backstory</h2>
             {renderBackstory()}
-            {/* <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis molestie nisl, et elementum eros dapibus nec. Maecenas ac orci luctus turpis fermentum placerat nec quis nunc. Praesent tempor erat vel erat feugiat, suscipit suscipit arcu condimentum. Nulla aliquam, sem nec rhoncus lacinia, dolor nibh molestie nisl, vitae lobortis lectus dolor a nulla. Integer fermentum mattis ipsum vel suscipit. Donec gravida nisi ut mollis tempus. Sed non bibendum mi, ornare laoreet neque. Nam aliquet mi metus, sit amet fermentum turpis vehicula sit amet. Nullam blandit magna purus. Donec viverra tempus metus sed convallis. Morbi nec metus ornare, pretium massa at, scelerisque quam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse condimentum, sem a cursus auctor, nulla dui pellentesque nunc, non rutrum enim urna quis magna. Maecenas egestas sem vel leo feugiat ornare ac eget nisl.
-          </p> */}
           </div>
         </div>
       )}
