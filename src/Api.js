@@ -48,7 +48,6 @@ export const createCharacter = async character => {
   return data
 }
 
-
 export const editCharacter = async character => {
   const data = await fetch('http://localhost:3010/characters/edit', {
     method: 'PUT',
@@ -74,4 +73,16 @@ export const deleteCharacter = async id => {
     .catch(error => console.log(error))
 
   return data
+}
+
+export const loadAdventure = async adventure => {
+  return await fetch('http://localhost:3010/adventures/create', {
+    method: 'POST',
+    body: JSON.stringify(adventure),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error))
 }

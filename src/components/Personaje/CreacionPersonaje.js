@@ -36,18 +36,15 @@ export const CreacionPersonaje = () => {
   })
 
   useEffect(()=>{
-    if (path[4] == "edit"){
+    if (path[4] === "edit"){
       getCharacter(path[2],path[3]).then(personaje =>{
         setCharacter(personaje)
       })
       setButton("Editar Personaje")
-      
-
     }
   },[])
 
   useEffect(() => {
-
     const i = icons.filter(img => img.name === className + '_' + gender)[0]
     i ? setImage(i.img) : setImage('nothing')
     setCharacter(char => ({...char, img: className + '_' + gender}))
@@ -71,7 +68,7 @@ export const CreacionPersonaje = () => {
       !character.charisma
     )
       return setError('Es necesario que complete todas las estadísticas.')
-    if (path[4] == "edit"){
+    if (path[4] === "edit"){
       const res = await editCharacter(character)
       alert(res.message)
       navigate('/personajes')
@@ -201,7 +198,6 @@ export const CreacionPersonaje = () => {
         </span>
       </section>
 
-
       <section className='classes'>
         <h2>Clases</h2>
         {classes.map(c => {
@@ -242,7 +238,6 @@ export const CreacionPersonaje = () => {
           </ul>
         </div>
       </section>
-
 
       <section className='stats2'>
         <span>
@@ -336,7 +331,6 @@ export const CreacionPersonaje = () => {
           />
         </span>
       </section>
-
 
       <textarea
         defaultValue={character.biography}

@@ -15,10 +15,10 @@ export const Card = ({ aventura }) => {
       <p>Idioma: {aventura.language}</p>
       <span>
         <a href={file} download={`${aventura.download}`}>
-          <button disabled={file ? false : true}>Descargar</button>
+          <button className='button-red' disabled={file ? false : true}>Descargar</button>
         </a>
-        <Link to={`/aventuras/${aventura.title}`} state={aventura}>
-          <button>Ver Online</button>
+        <Link to={`/aventuras/view/${aventura.title}`} state={aventura}>
+          <button className='button-red'>Ver Online</button>
         </Link>
       </span>
     </li>
