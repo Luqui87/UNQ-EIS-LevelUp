@@ -32,7 +32,7 @@ const LoadAdventure = () => {
       return setError('Es necesario que cargue una aventura (PDF).')
 
     const res = await loadAdventure(adventure)
-    alert(res.message)
+    // alert(res.message)
     navigate('/aventuras')
   }
 
@@ -105,7 +105,7 @@ const LoadAdventure = () => {
             onChange={event => {
               setAdventure(datosPrevios => ({
                 ...datosPrevios,
-                img: URL.createObjectURL(event.target.files[0]),
+                img: event.target.files[0],
               }))
             }}
           />
@@ -119,7 +119,7 @@ const LoadAdventure = () => {
             onChange={event => {
               setAdventure(datosPrevios => ({
                 ...datosPrevios,
-                pdf: URL.createObjectURL(event.target.files[0]),
+                pdf: event.target.files[0],
               }))
             }}
           />

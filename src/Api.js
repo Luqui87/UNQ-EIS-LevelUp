@@ -76,12 +76,18 @@ export const deleteCharacter = async id => {
 }
 
 export const loadAdventure = async adventure => {
+  const formData = new FormData()
+  formData.append('owner', adventure.owner)
+  formData.append('title', adventure.title)
+  formData.append('level', adventure.level)
+  formData.append('duration', adventure.duration)
+  formData.append('language', adventure.language)
+  formData.append('img', adventure.img)
+  formData.append('pdf', adventure.pdf)
+
   return await fetch('http://localhost:3010/adventures/create', {
     method: 'POST',
-    body: JSON.stringify(adventure),
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    body: formData,
   })
     .then(response => response.json())
     .catch(error => console.log(error))

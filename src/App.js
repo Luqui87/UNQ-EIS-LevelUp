@@ -22,7 +22,7 @@ function App() {
           <Route path='/aventuras' element={<Aventuras />} />
           <Route path='/aventuras/crear' element={<LoadAdventure />} />
           <Route path='/manuales' element={<Manuales />} />
-          <Route path='/:tipo/view/:manual_title' element={<PDFView />} />
+          <Route path='/:tipo/view/:title' element={<PDFView />} />
           <Route path='/personajes' element={<Personajes />} />
           <Route path='/personajes/:owner/:personaje' element={<Personaje />} />
           <Route path='/create/character' element={<CreacionPersonaje />} />

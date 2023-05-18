@@ -40,7 +40,6 @@ export const Aventuras = () => {
 
   return (
     <div className='adventures'>
-      <img src={aventuras[0].img} alt='test' />
       <aside className='filters'>
         <button className='button-red' onClick={loadAdventure}>
           Cargar Aventura

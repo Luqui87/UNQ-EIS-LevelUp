@@ -1,4 +1,4 @@
-import blank from '../../../resources/dungeons-and-dragons.png';
+// import blank from '../../../resources/dungeons-and-dragons.png';
 
 export const getFile = (path) => {
   var file;
@@ -8,15 +8,15 @@ export const getFile = (path) => {
   return file;
 };
 
-export const getImage = (path) => {
-  var image;
-  try {
-    image = require(`../../../resources/adventures/${path}`);
-  } catch (error) {
-    image = blank;
-  }
-  return image;
-};
+// export const getImage = (path) => {
+//   var image;
+//   try {
+//     image = require(`../../../resources/adventures/${path}`);
+//   } catch (error) {
+//     image = blank;
+//   }
+//   return image;
+// };
 
 export const removeAccents = str => {
   return str
