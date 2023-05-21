@@ -48,7 +48,6 @@ export const createCharacter = async character => {
   return data
 }
 
-
 export const editCharacter = async character => {
   const data = await fetch('http://localhost:3010/characters/edit', {
     method: 'PUT',
@@ -74,4 +73,22 @@ export const deleteCharacter = async id => {
     .catch(error => console.log(error))
 
   return data
+}
+
+export const loadAdventure = async adventure => {
+  const formData = new FormData()
+  formData.append('owner', adventure.owner)
+  formData.append('title', adventure.title)
+  formData.append('level', adventure.level)
+  formData.append('duration', adventure.duration)
+  formData.append('language', adventure.language)
+  formData.append('img', adventure.img)
+  formData.append('pdf', adventure.pdf)
+
+  return await fetch('http://localhost:3010/adventures/create', {
+    method: 'POST',
+    body: formData,
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error))
 }
