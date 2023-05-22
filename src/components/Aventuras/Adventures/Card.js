@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { getFile } from './functions'
-import './votacion.css'
 import React, { useEffect, useState, useContext } from 'react'
 import { likeAdventure } from '../../../Api'
 import { AuthContext } from '../../AuthContext'
@@ -47,10 +46,10 @@ export const Card = ({ aventura }) => {
       <p>Nivel: {aventura.level}</p>
       <p>Duración: {aventura.duration}</p>
       <p>Idioma: {aventura.language}</p>
-          {aventura.owner !== username && <button className={status==='like'? 'btn active' : 'likes'} onClick={handleClickLike}> 
-          Votar 
-            <span>{like}</span>
-          </button>}
+      {aventura.owner !== username && <button className={status==='like'? 'likesactive' : 'likes'} onClick={handleClickLike}> 
+          Votar
+          <span className='likespan'>{like}</span>
+        </button> }
       <span>
         <a href={aventura.pdf} download={`${aventura.title}`}>
           <button className='button-red' disabled={!file ? false : true}>
