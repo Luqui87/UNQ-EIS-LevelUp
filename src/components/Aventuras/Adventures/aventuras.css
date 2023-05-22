@@ -84,3 +84,15 @@
     margin-left: 6px;
     font-family: 'MedievalSharp', cursive;
   }
+
+.filters {
+    display: grid;
+    justify-items: center;
+}
+
+.ordenAventuras {
+    justify-self: end;
+    font-size: 15px;
+    width: 90%;
+    height: 140%;
+}

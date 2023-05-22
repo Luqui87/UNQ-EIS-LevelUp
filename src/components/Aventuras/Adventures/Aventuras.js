@@ -9,6 +9,16 @@ export const Aventuras = () => {
   const [filteredList, setFilteredList] = new useState(aventuras)
   const navigate = useNavigate()
 
+  const [order, setOrder] = useState('default');
+  const [sortedList, setSortedList] = new useState(aventuras)
+  const sortAdventures = (e) => {
+      setOrder(e.target.value);
+      const sortedarray = sortedList.sort((a,b) => {
+      return order === 'asc'?  (a.likes - b.likes): (b.likes - a.likes);
+      })
+      setSortedList(sortedarray)
+  }
+
   const filterBySearch = event => {
     const query = event.target.value
     const normalizedQuery = removeAccents(query)
@@ -38,12 +48,22 @@ export const Aventuras = () => {
     setFilteredList(aventuras)
   }, [aventuras])
 
+  useEffect(() => {
+    setSortedList(aventuras)
+  }, [aventuras])
+
   return (
     <div className='adventures'>
       <aside className='filters'>
         <button className='button-red' onClick={loadAdventure}>
           Cargar Aventura
         </button>
+        <p>Ordenar por</p>
+        <select className='ordenAventuras' defaultValue={'default'} onChange={sortAdventures}  value={order} >
+          <option value='default' disabled>Seleccionar</option>
+          <option value='asc'>Más votada</option>
+          <option value='dsc'>Menos votada</option>
+      </select>
       </aside>
       <aside>
         <input
