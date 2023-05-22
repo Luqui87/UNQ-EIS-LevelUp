@@ -63,3 +63,36 @@
     margin: 0;
     padding: 0;
 }
+
+.likes .likesactive {
+    cursor: pointer;
+    color: #74777d;
+    background-color: transparent;
+    outline: none ;
+  }  
+  
+.likes:hover {
+      color: #282a2e;
+      background-color:#74777d;
+  }
+    
+.likesactive, .likesactive:hover {
+      color: #1b81f5;
+  }
+  
+.likespan {
+    margin-left: 6px;
+    font-family: 'MedievalSharp', cursive;
+  }
+
+.filters {
+    display: grid;
+    justify-items: center;
+}
+
+.ordenAventuras {
+    justify-self: end;
+    font-size: 15px;
+    width: 90%;
+    height: 140%;
+}

@@ -15,6 +15,7 @@ const LoadAdventure = () => {
     language: '',
     img: '',
     pdf: '',
+    likes: '',
   })
 
   const send = async () => {
