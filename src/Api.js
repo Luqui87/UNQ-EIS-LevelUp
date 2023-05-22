@@ -92,3 +92,14 @@ export const loadAdventure = async adventure => {
     .then(response => response.json())
     .catch(error => console.log(error))
 }
+
+export const likeAdventure = async (id, user) => {
+  return await fetch(`${API_URL}/adventures/like/${id}/${user}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error))
+}

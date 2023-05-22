@@ -1,42 +1,41 @@
 import { Link } from 'react-router-dom'
-import { getFile, getLikes } from './functions'
+import { getFile } from './functions'
 import './votacion.css'
-import React, { useState, useReducer } from 'react'
-
-const appReducer = (state, action) => {
-  switch(action.type) {
-    case 'HANDLE_LIKE':
-      return {
-        ...state,
-        likes: state.likes + action.payload
-      }
-    default:
-      return state
-  }
-}
+import React, { useEffect, useState, useContext } from 'react'
+import { likeAdventure } from '../../../Api'
+import { AuthContext } from '../../AuthContext'
 
 export const Card = ({ aventura }) => {
   const file = getFile(aventura.pdf)
   localStorage.setItem('pdf', aventura.pdf)
+  const { username, token } = useContext(AuthContext)
 
-  const [state, dispatch] = useReducer(appReducer, aventura.likes)
-  const likes = state
+  const [like, setLike] = useState(0)
   const [status, setStatus] = useState(null)
   
+  useEffect (( ) => {
+    setLike(aventura.likes)
+  },[aventura])
+
   const handleClickLike = () => {
+    if(!token)
+      return alert("No podés darle like a una aventura sin iniciar sesión")
+    if(aventura.owner === username)
+      return alert("No podés darle like a tu propia aventura")
     if (status==='like') {
       setStatus(null)
-      dispatch({
-        type: 'HANDLE_LIKE',
-        payload: -1,
-      })
+      setLike(
+        like - 1
+      )
     } else {
       setStatus('like')
-      dispatch({
-        type: 'HANDLE_LIKE',
-        payload: 1,
-      })
+      setLike(
+        like +1
+      )
     }
+    likeAdventure(aventura.id, username)
+    .then()
+    .catch(err => console.log(err))
   }
 
   return (
@@ -48,10 +47,10 @@ export const Card = ({ aventura }) => {
       <p>Nivel: {aventura.level}</p>
       <p>Duración: {aventura.duration}</p>
       <p>Idioma: {aventura.language}</p>
-          <button className={status==='like'? 'btn active' : 'likes'} onClick={handleClickLike}> 
+          {aventura.owner !== username && <button className={status==='like'? 'btn active' : 'likes'} onClick={handleClickLike}> 
           Votar 
-            <span>{likes}</span>
-          </button>
+            <span>{like}</span>
+          </button>}
       <span>
         <a href={aventura.pdf} download={`${aventura.title}`}>
           <button className='button-red' disabled={!file ? false : true}>
