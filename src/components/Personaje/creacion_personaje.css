@@ -5,6 +5,7 @@
     align-items: center;
     text-align: center;
     margin-top: 1em;
+
 }
 
 #character_name {
@@ -23,8 +24,18 @@
 .alignments, .races, .classes, .stats2 {
     display: flex;
     flex-wrap: wrap;
-    width: 40%;
+    align-self: center;
+    padding: 2em;
+    justify-content: center;
 }
+.stats2{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 3em;
+    grid-row-gap: 2em; 
+}
+
 
 .alignments > h2, .races > h2, .classes > h2 {
     flex-basis: 100%;
@@ -69,7 +80,7 @@
 .description {
     border: 1px solid black;
     min-width: 44.5em;
-    min-height: 20em;
+    min-height: 15em;
     max-height: 20em;
     margin-top: 0.9em;
     margin-bottom: 1.1em;
@@ -99,4 +110,9 @@ textarea {
     margin-bottom: 3em;
 }
 
-
+.name{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+}

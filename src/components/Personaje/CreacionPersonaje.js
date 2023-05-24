@@ -8,6 +8,10 @@ import { AuthContext } from '../AuthContext'
 import icons from '../../resources/character/race_icons/icons'
 import './creacion_personaje.css'
 import { getCharacter } from '../../Api'
+import CircularSlider from '@fseehawer/react-circular-slider'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+import { getImage } from './functions'
 
 export const CreacionPersonaje = () => {
   const navigate = useNavigate()
@@ -39,15 +43,17 @@ export const CreacionPersonaje = () => {
     if (path[4] === "edit"){
       getCharacter(path[2],path[3]).then(personaje =>{
         setCharacter(personaje)
+        const image = personaje.img
+        setGender(image.slice(-1))
       })
       setButton("Editar Personaje")
     }
   },[])
 
   useEffect(() => {
-    const i = icons.filter(img => img.name === className + '_' + gender)[0]
-    i ? setImage(i.img) : setImage('nothing')
-    setCharacter(char => ({...char, img: className + '_' + gender}))
+    const i = icons.filter(img => img.name === character.race + '_' + gender)[0]
+    i ? setImage(i.img) : setImage(getImage)
+    setCharacter(char => ({...char, img: char.race + '_' + gender}))
   }, [className, gender])
 
   const send = async () => {
@@ -82,7 +88,7 @@ export const CreacionPersonaje = () => {
 
   return (
     <div className='character_sheet'>
-      <section>
+      <section className='name'>
         <input
           defaultValue={character.fullname}
           type='text'
@@ -92,7 +98,35 @@ export const CreacionPersonaje = () => {
             setCharacter(char => ({ ...char, fullname: event.target.value }))
           }
         />
-        <input
+        {/* <Slider 
+          label='level'
+          onChange={value =>
+            setCharacter(char => ({ ...char, level: value }))
+          }
+          initialValue= {character.level}
+           /> */}
+        <CircularSlider
+          width={100}
+          min={0}
+          max={20}
+          knobPosition='top'
+          label='level'
+          progressSize={15}
+          valueFontSize='2rem'
+          progressColorTo='#FF3737'
+          progressColorFrom='#801C1C'
+          knobColor='#FF3737'
+          labelColor='#FF3737'
+          verticalOffset='0rem'
+          onChange={value =>
+            setCharacter(char => ({ ...char, level: value }))
+          }
+          dataIndex={character.level}
+          className="slider"
+        >
+          
+        </CircularSlider>
+        {/* <input
           defaultValue={character.level}
           type='number'
           placeholder='Nivel'
@@ -102,10 +136,424 @@ export const CreacionPersonaje = () => {
           onChange={event =>
             setCharacter(char => ({ ...char, level: event.target.value }))
           }
-        />
+        /> */}
       </section>
 
+      <Tabs>
+        <TabList>
+          <Tab>Alineamiento</Tab>
+          <Tab>Raza</Tab>
+          <Tab>Clase</Tab>
+          <Tab>Stats</Tab>
+          <Tab>Biografia</Tab>
+        </TabList>
+      
 
+      <TabPanel>
+        <section className='alignments'>
+          <h2>Alineamientos</h2>
+          {aligments.map(alignment => {
+            return (
+              <span>
+                <input
+                  type='radio'
+                  value={alignment.value}
+                  checked={character.alignment === alignment.value}
+                  onChange={event =>
+                    setCharacter(char => ({
+                      ...char,
+                      alignment: event.target.value,
+                    }))
+                  }
+                />
+                <label
+                  onClick={() =>
+                    setCharacter(char => ({
+                      ...char,
+                      alignment: alignment.value,
+                    }))
+                  }
+                >
+                  {alignment.name}
+                </label>
+              </span>
+            )
+          })}
+          <div className='description'>
+            {
+              aligments.filter(
+                alignment => alignment.value === character.alignment
+              )[0]?.description
+            }
+          </div>
+        </section>
+      </TabPanel>
+
+      <TabPanel>
+        <section className='races'>
+          <h2>Razas</h2>
+          <div className='portrait'>
+            <img src={img} alt='imagen de raza'/>
+            <div>
+              <input
+                type='radio'
+                value='m'
+                checked={gender === 'm'}
+                onChange={event => setGender(event.target.value)}
+              />
+              <label onClick={() => setGender('m')}>Másculino</label>
+              <input
+                type='radio'
+                value='f'
+                checked={gender === 'f'}
+                onChange={event => setGender(event.target.value)}
+              />
+              <label onClick={() => setGender('f')}>Femenino</label>
+            </div>
+          </div>
+          <span>
+            {races.map(race => {
+              return (
+                <span>
+                  <input
+                    type='radio'
+                    value={race.value}
+                    onChange={event => {
+                      console.log(character.race)
+                      setClassName(race.value)
+                      setCharacter(char => ({
+                        ...char,
+                        race: event.target.value,
+                      }))
+                    }}
+                    checked={character.race === race.value}
+                  />
+                  <label
+                    onClick={() => {
+                      setClassName(race.value)
+                      setCharacter(char => ({
+                        ...char,
+                        race: race.value,
+                      }))
+                    }}
+                  >
+                    {race.name}
+                  </label>
+                </span>
+              )
+            })}
+          </span>
+        </section>
+      </TabPanel>
+
+      <TabPanel>
+        <section className='classes'>
+          <h2>Clases</h2>
+          {classes.map(c => {
+            return (
+              <span>
+                <input
+                  type='radio'
+                  value={c.value}
+                  checked={character.class === c.value}
+                  onChange={event =>
+                    setCharacter(char => ({
+                      ...char,
+                      class: event.target.value,
+                    }))
+                  }
+                />
+                <label
+                  onClick={() =>
+                    setCharacter(char => ({
+                      ...char,
+                      class: c.value,
+                    }))
+                  }
+                >
+                  {c.name}
+                </label>
+              </span>
+            )
+          })}
+          <div className='description'>
+            {classes.filter(c => c.value === character.class)[0]?.description}
+            <ul>
+              {classes
+                .filter(c => c.value === character.class)[0]
+                ?.capabilities.map(cap => (
+                  <li>{cap}</li>
+                ))}
+            </ul>
+          </div>
+        </section>
+
+        
+      </TabPanel>
+
+      <TabPanel>
+      <section className='stats2'>
+        <CircularSlider
+            width={200}
+            min={0}
+            max={20}
+            knobPosition='top'
+            label='Fuerza'
+            progressSize={20}
+            valueFontSize='5rem'
+            labelFontSize='1.5rem'
+            progressColorTo='#FF3737'
+            progressColorFrom='#801C1C'
+            knobColor='#FF3737'
+            labelColor='#FF3737'
+            verticalOffset='0rem'
+            onChange={value =>
+              setCharacter(char => ({
+                ...char,
+                strength: value,
+              }))
+            }
+            dataIndex={character.strength}
+          >
+            
+          </CircularSlider>
+          <CircularSlider
+            width={200}
+            min={0}
+            max={20}
+            knobPosition='top'
+            label='Destreza'
+            progressSize={20}
+            valueFontSize='5rem'
+            labelFontSize='1.5rem'
+            progressColorTo='#FF3737'
+            progressColorFrom='#801C1C'
+            knobColor='#FF3737'
+            labelColor='#FF3737'
+            verticalOffset='0rem'
+            onChange={value =>
+              setCharacter(char => ({
+                ...char,
+                dexterity: value,
+              }))
+            }
+            dataIndex={character.dexterity}
+          >
+            
+          </CircularSlider>
+          <CircularSlider
+            width={200}
+            min={0}
+            max={20}
+            knobPosition='top'
+            label='Constitución'
+            progressSize={20}
+            valueFontSize='5rem'
+            labelFontSize='1.5rem'
+            progressColorTo='#FF3737'
+            progressColorFrom='#801C1C'
+            knobColor='#FF3737'
+            labelColor='#FF3737'
+            verticalOffset='0rem'
+            onChange={value =>
+              setCharacter(char => ({
+                ...char,
+                constitution: value,
+              }))
+            }
+            dataIndex={character.constitution}
+          >
+            
+          </CircularSlider>
+          <CircularSlider
+            width={200}
+            min={0}
+            max={20}
+            knobPosition='top'
+            label='Inteligencia'
+            progressSize={20}
+            valueFontSize='5rem'
+            labelFontSize='1.5rem'
+            progressColorTo='#FF3737'
+            progressColorFrom='#801C1C'
+            knobColor='#FF3737'
+            labelColor='#FF3737'
+            verticalOffset='0rem'
+            onChange={value =>
+              setCharacter(char => ({
+                ...char,
+                intelligence: value,
+              }))
+            }
+            dataIndex={character.intelligence}
+          >
+            
+          </CircularSlider>
+          <CircularSlider
+            width={200}
+            min={0}
+            max={20}
+            knobPosition='top'
+            label='Sabiduría'
+            progressSize={20}
+            valueFontSize='5rem'
+            labelFontSize='1.5rem'
+            progressColorTo='#FF3737'
+            progressColorFrom='#801C1C'
+            knobColor='#FF3737'
+            labelColor='#FF3737'
+            verticalOffset='0rem'
+            onChange={value =>
+              setCharacter(char => ({
+                ...char,
+                wisdom: value,
+              }))
+            }
+            dataIndex={character.wisdom}
+          >
+            
+          </CircularSlider>
+          <CircularSlider
+            width={200}
+            min={0}
+            max={20}
+            knobPosition='top'
+            label='Carisma'
+            progressSize={20}
+            valueFontSize='5rem'
+            labelFontSize='1.5rem'
+            progressColorTo='#FF3737'
+            progressColorFrom='#801C1C'
+            knobColor='#FF3737'
+            labelColor='#FF3737'
+            verticalOffset='0rem'
+            onChange={value =>
+              setCharacter(char => ({
+                ...char,
+                charisma: value,
+              }))
+            }
+            dataIndex={character.charisma}
+          >
+            
+          </CircularSlider>
+          {/* <span>
+            <label>Fuerza</label>
+            <input
+              defaultValue={character.strength}
+              type='number'
+              min='1'
+              max='20'
+              onChange={event =>
+                setCharacter(char => ({
+                  ...char,
+                  strength: event.target.value,
+                }))
+              }
+            />
+          </span>
+          <span>
+            <label>Destreza</label>
+            <input
+              defaultValue={character.dexterity}
+              type='number'
+              min='1'
+              max='20'
+              onChange={event =>
+                setCharacter(char => ({
+                  ...char,
+                  dexterity: event.target.value,
+                }))
+              }
+            />
+          </span>
+          <span>
+            <label>Constitución</label>
+            <input
+              defaultValue={character.constitution}
+              type='number'
+              min='1'
+              max='20'
+              onChange={event =>
+                setCharacter(char => ({
+                  ...char,
+                  constitution: event.target.value,
+                }))
+              }
+            />
+          </span>
+          <span>
+            <label>Inteligencia</label>
+            <input
+              defaultValue={character.intelligence}
+              type='number'
+              min='1'
+              max='20'
+              onChange={event =>
+                setCharacter(char => ({
+                  ...char,
+                  intelligence: event.target.value,
+                }))
+              }
+            />
+          </span>
+          <span>
+            <label>Sabiduría</label>
+            <input
+              defaultValue={character.wisdom}
+              type='number'
+              min='1'
+              max='20'
+              onChange={event =>
+                setCharacter(char => ({
+                  ...char,
+                  wisdom: event.target.value,
+                }))
+              }
+            />
+          </span>
+          <span>
+            <label>Carisma</label>
+            <input
+              defaultValue={character.charisma}
+              type='number'
+              min='1'
+              max='20'
+              onChange={event =>
+                setCharacter(char => ({
+                  ...char,
+                  charisma: event.target.value,
+                }))
+              }
+            />
+          </span>*/}
+        </section> 
+      </TabPanel>
+
+      <TabPanel>
+        <textarea
+          defaultValue={character.biography}
+          placeholder='Escriba la historia de su personaje...'
+          onChange={event =>
+            setCharacter(char => ({
+              ...char,
+              biography: event.target.value,
+            }))
+          }
+        />
+      </TabPanel>
+    </Tabs>
+
+    <span
+        className='err'
+        style={{ visibility: `${error ? 'visible' : 'hidden'}` }}
+      >
+        {error}
+      </span>
+      <button className='btn' onClick={send}>
+        {button}
+      </button>
+{/* 
       <section className='alignments'>
         <h2>Alineamientos</h2>
         {aligments.map(alignment => {
@@ -350,9 +798,43 @@ export const CreacionPersonaje = () => {
       </span>
       <button className='btn' onClick={send}>
         {button}
-      </button>
+      </button> */}
     </div>
   )
 }
 
 export default CreacionPersonaje
+
+const Slider = (props) =>{
+
+  console.log(props.initialValue)
+
+  useEffect(()=>{
+
+  },[props.initialValue])
+
+  return(
+   props.initialValue? 
+  <CircularSlider
+          key={props.label}
+          width={100}
+          min={0}
+          max={20}
+          knobPosition='top'
+          label={props.label}
+          progressSize={15}
+          valueFontSize='2rem'
+          progressColorTo='#FF3737'
+          progressColorFrom='#801C1C'
+          knobColor='#FF3737'
+          labelColor='#FF3737'
+          verticalOffset='0rem'
+          onChange={value => props.onChange}
+          initialValue={props.initialValue}
+        >
+          
+        </CircularSlider>
+    :
+    <></>
+  )
+}
