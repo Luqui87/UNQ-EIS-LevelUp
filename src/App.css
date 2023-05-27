@@ -16,6 +16,6 @@ center embed {
     border-radius: 0.2em;
     padding: 0.9em 2em;
     cursor: pointer;
-    width: 100%;
+    /* width: 100%; */
     min-height: 2.9em;
 }

@@ -58,12 +58,7 @@ export const Card = ({ aventura }) => {
       <p>Nivel: {aventura.level}</p>
       <p>Duración: {aventura.duration}</p>
       <p>Idioma: {aventura.language}</p>
-      {aventura.owner !== username && <button className={status==='like'? 'likesactive' : 'likes'} onClick={handleClickLike}> 
-          Votar
-          <span className='likespan'>{like}</span>
-        </button> }
-      {aventura.owner === username && <button className = 'deleteButton' onClick={() => confirm()} >Eliminar</button>}
-      <span>
+      <span className='buttons'>
         <a href={aventura.pdf} download={`${aventura.title}`}>
           <button className='button-red' disabled={!file ? false : true}>
             Descargar
@@ -75,6 +70,12 @@ export const Card = ({ aventura }) => {
         >
           <button className='button-red'>Ver Online</button>
         </Link>
+
+        {aventura.owner !== username && <button className={ status==='like'? 'likesactive' : 'likes'} onClick={handleClickLike}> 
+          <i class="gg-chevron-up-r"></i>
+          <span className='likespan'> {like}</span>
+        </button> }
+         {aventura.owner === username && <button className = 'button-red' onClick={() => confirm()} >Eliminar</button>}
       </span>
     </li>
   )

@@ -1,3 +1,4 @@
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/chevron-up-r.css');
 .adventures {
     display: flex;
     justify-content: space-evenly;
@@ -54,21 +55,32 @@
     padding: 0 1em;
 }
 
-.card span {
+.card .buttons {
     display: flex;
     justify-content: space-evenly;
 }
 
-.card a {
+.card a , .card .buttons{
     margin: 0;
     padding: 0;
 }
 
-.likes .likesactive {
+.card i {
+    padding:0;
+    margin: 0;
+}
+
+
+
+.likes, .likesactive {
     cursor: pointer;
-    color: #74777d;
+    color: white;
     background-color: transparent;
     outline: none ;
+    display: flex;
+    padding: .6em ;
+    font-size: 1em;
+    background-color: red;
   }  
   
 .likes:hover {
@@ -77,11 +89,11 @@
   }
     
 .likesactive, .likesactive:hover {
-      color: #1b81f5;
+      color: black;
   }
   
 .likespan {
-    margin-left: 6px;
+    display: inline;
     font-family: 'MedievalSharp', cursive;
   }
 
