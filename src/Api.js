@@ -103,3 +103,16 @@ export const likeAdventure = async (id, user) => {
     .then(response => response.json())
     .catch(error => console.log(error))
 }
+
+export const deleteAdventure = async id => {
+  const data = await fetch(`${API_URL}/adventures/delete/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error))
+
+  return data
+}

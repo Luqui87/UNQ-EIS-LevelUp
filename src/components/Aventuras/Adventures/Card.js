@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { getFile } from './functions'
 import React, { useEffect, useState, useContext } from 'react'
-import { likeAdventure } from '../../../Api'
+import { likeAdventure, deleteAdventure } from '../../../Api'
 import { AuthContext } from '../../AuthContext'
 
 export const Card = ({ aventura }) => {
@@ -37,6 +37,18 @@ export const Card = ({ aventura }) => {
     .catch(err => console.log(err))
   }
 
+  async function confirm() {
+    const res = window.confirm(`¿Quieres eliminar la aventura: ${aventura.title}?`)
+    if (res) {
+      const res = await deleteAdventure(aventura.id)
+      alert(res.message)
+      window.location.reload()
+    }
+    else {
+      alert('Cancelado')
+    }
+  }
+
   return (
     <li className='card'>
       <img src={aventura.img} alt={`${aventura.title}`} />
@@ -50,6 +62,7 @@ export const Card = ({ aventura }) => {
           Votar
           <span className='likespan'>{like}</span>
         </button> }
+      {aventura.owner === username && <button className = 'deleteButton' onClick={() => confirm()} >Eliminar</button>}
       <span>
         <a href={aventura.pdf} download={`${aventura.title}`}>
           <button className='button-red' disabled={!file ? false : true}>
