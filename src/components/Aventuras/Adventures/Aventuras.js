@@ -10,13 +10,12 @@ export const Aventuras = () => {
   const navigate = useNavigate()
 
   const [order, setOrder] = useState('default');
-  const [sortedList, setSortedList] = new useState(aventuras)
   const sortAdventures = (e) => {
       setOrder(e.target.value);
-      const sortedarray = sortedList.sort((a,b) => {
-      return order === 'asc'?  (a.likes - b.likes): (b.likes - a.likes);
+      const sortedarray = filteredList.sort((a,b) => {
+      return e.target.value === 'asc'?  (b.likes - a.likes): (a.likes - b.likes);
       })
-      setSortedList(sortedarray)
+      setFilteredList(sortedarray)
   }
 
   const filterBySearch = event => {
@@ -27,7 +26,9 @@ export const Aventuras = () => {
     updatedList = updatedList.filter(item => {
       const normalizedTitle = removeAccents(item.title)
       return normalizedTitle.includes(normalizedQuery)
-    })
+    }).sort((a,b) => {
+      return order === 'asc'?  (b.likes - a.likes): (a.likes - b.likes);
+      })
     setFilteredList(updatedList)
   }
 
@@ -46,10 +47,6 @@ export const Aventuras = () => {
 
   useEffect(() => {
     setFilteredList(aventuras)
-  }, [aventuras])
-
-  useEffect(() => {
-    setSortedList(aventuras)
   }, [aventuras])
 
   return (
