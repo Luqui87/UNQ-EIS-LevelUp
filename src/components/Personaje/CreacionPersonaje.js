@@ -98,13 +98,6 @@ export const CreacionPersonaje = () => {
             setCharacter(char => ({ ...char, fullname: event.target.value }))
           }
         />
-        {/* <Slider 
-          label='level'
-          onChange={value =>
-            setCharacter(char => ({ ...char, level: value }))
-          }
-          initialValue= {character.level}
-           /> */}
         <CircularSlider
           width={100}
           min={0}
@@ -123,20 +116,8 @@ export const CreacionPersonaje = () => {
           }
           dataIndex={character.level}
           className="slider"
-        >
-          
+        > 
         </CircularSlider>
-        {/* <input
-          defaultValue={character.level}
-          type='number'
-          placeholder='Nivel'
-          min='1'
-          max='20'
-          id='character_level'
-          onChange={event =>
-            setCharacter(char => ({ ...char, level: event.target.value }))
-          }
-        /> */}
       </section>
 
       <Tabs>

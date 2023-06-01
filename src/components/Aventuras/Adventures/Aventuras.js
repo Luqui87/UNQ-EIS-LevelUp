@@ -8,12 +8,13 @@ export const Aventuras = () => {
   const [aventuras, setAventuras] = useState([{}])
   const [filteredList, setFilteredList] = new useState(aventuras)
   const navigate = useNavigate()
-
   const [order, setOrder] = useState('default');
+  const [oficial, setOficial] = useState('');
+
   const sortAdventures = (e) => {
       setOrder(e.target.value);
       const sortedarray = filteredList.sort((a,b) => {
-      return e.target.value === 'asc'?  (b.likes - a.likes): (a.likes - b.likes);
+      return e.target.value === 'asc'? (b.likes - a.likes) : (a.likes - b.likes);
       })
       setFilteredList(sortedarray)
   }
@@ -60,7 +61,11 @@ export const Aventuras = () => {
           <option value='default' disabled>Seleccionar</option>
           <option value='asc'>Más votada</option>
           <option value='dsc'>Menos votada</option>
-      </select>
+        </select>
+        <span>
+          <label>Es oficial</label>
+          <input type='checkbox' value='default' onChange={event => setOficial(event.target.checked ? 'default' : '')} />
+        </span>
       </aside>
       <aside>
         <input
@@ -71,6 +76,7 @@ export const Aventuras = () => {
         />
         <ul className='adventures_list'>
           {filteredList?.map(aventura => (
+            aventura.owner?.includes(oficial) &&
             <Card
               aventura={aventura}
               key={`${aventura.username}/${aventura.title}`}

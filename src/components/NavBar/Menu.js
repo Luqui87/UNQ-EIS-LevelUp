@@ -32,8 +32,10 @@ export const LoggedMenu = () => {
           onClick={() => {
             setToken('')
             localStorage.setItem('token', '')
+            sessionStorage.setItem('token', '')
             setUsername('')
             localStorage.setItem('username', '')
+            sessionStorage.setItem('username', '')
           }}
         >
           Cerrar Sesión
