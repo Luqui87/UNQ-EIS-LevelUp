@@ -6,6 +6,7 @@ import { AuthContext } from '../AuthContext'
 export const IniciarSesion = () => {
   const { setToken, setUsername } = useContext(AuthContext)
   const [error, setError] = useState('')
+  const [remember, setRemember] = useState(false)
 
   const [datosDelUsuario, setDatosDelUsuario] = useState({
     username: '',
@@ -19,10 +20,18 @@ export const IniciarSesion = () => {
     if (!res.token) return setError(res.message)
 
     alert(res.message)
-    localStorage.setItem('token', res.token)
-    localStorage.setItem('username', datosDelUsuario.username)
-    setToken(localStorage.getItem('token'))
-    setUsername(localStorage.getItem('username'))
+    if(remember) {
+      localStorage.setItem('token', res.token)
+      localStorage.setItem('username', datosDelUsuario.username)
+      setToken(localStorage.getItem('token'))
+      setUsername(localStorage.getItem('username'))
+    }
+    else {
+      sessionStorage.setItem('token', res.token)
+      sessionStorage.setItem('username', datosDelUsuario.username)
+      setToken(sessionStorage.getItem('token'))
+      setUsername(sessionStorage.getItem('username'))
+    }
   }
 
   return (
@@ -56,6 +65,13 @@ export const IniciarSesion = () => {
             }))
           }}
           required
+        />
+      </span>
+      <span>
+        <label>Recordar cuenta</label>
+        <input
+          type='checkbox'
+          onChange={event => setRemember(event.target.checked)}
         />
       </span>
       <span
