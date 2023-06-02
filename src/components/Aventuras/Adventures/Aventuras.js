@@ -34,7 +34,7 @@ export const Aventuras = () => {
   }
 
   const loadAdventure = () => {
-    if (!localStorage.getItem('token'))
+    if (!localStorage.getItem('token') || !sessionStorage.getItem('token'))
       alert('Debes estar logeado para cargar una aventura.')
     else navigate('/aventuras/crear')
   }
