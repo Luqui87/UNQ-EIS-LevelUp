@@ -19,7 +19,7 @@ const LoadAdventure = () => {
   })
 
   const send = async () => {
-    if (!localStorage.getItem('token'))
+    if (!localStorage.getItem('token') && !sessionStorage.getItem('token'))
       return alert('Es necesario que incie sesión para cargar una aventura.')
     if (!adventure.title)
       return setError('Se requiere un título para la aventura.')
