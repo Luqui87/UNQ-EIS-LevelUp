@@ -1,4 +1,4 @@
-.menu {
+.menu, .menu .InNav {
     width: 15em;
     display: flex;
     justify-content: center;
@@ -6,35 +6,38 @@
     flex-direction: row;
 }
 
-.menu:first-child {
+.menu > div {
     position: absolute;
     left: 10em;
     height: 100%;
 }
-.menu:hover > div {
-    visibility: visible;
-}
 
-.menu > div {
+
+ .menu:hover > div {
+    cursor: pointer;
+} 
+
+.menu .despegable {
     position: absolute;
-    visibility: hidden;
     background-color: #212121;
     width: 15em;
-    height: 20em;
+    min-height: 3em;
+    height: auto;
     top: 3.5em;
     border-bottom-left-radius: 1em;
     border-bottom-right-radius: 1em;
+    align-items: center;
 }
 
-.menu > div > * {
+.menu > *, .menu > .despegable > *{
     color: white;
 }
 
-.menu > span {
+.menu > div > span {
     flex-basis: 35%;
 }
 
-.menu > img {
+.menu > div > img {
     max-width: 3em;
     border-radius: 50%;
 }
