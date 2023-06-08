@@ -6,7 +6,7 @@
     flex-direction: row;
 }
 
-.menu > div {
+.menu {
     position: absolute;
     left: 10em;
     height: 100%;

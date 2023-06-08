@@ -18,3 +18,8 @@ header {
     margin: 0 1em;
     padding: 0.2em 1em; 
 }
+
+.navbar img{
+    padding-top: 3px;
+    height: 3em;
+}

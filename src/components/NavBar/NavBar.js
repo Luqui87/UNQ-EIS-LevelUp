@@ -11,6 +11,9 @@ export const NavBar = ({ buttons }) => {
   return (
     <header>
       <nav className='navbar'>
+        <Link to={'/'} className='logo'>
+          <img src='dnd_logo.webp'/>
+        </Link>
         {token ? <LoggedMenu/> : <UnloggedMenu/>}
         <ul>
           {buttons?.map((button, index) => (
