@@ -116,3 +116,17 @@ export const deleteAdventure = async id => {
 
   return data
 }
+
+
+export const getLikes = async username => {
+  const data = await fetch(`${API_URL}/adventures/like/${username}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error))
+
+  return data
+}
