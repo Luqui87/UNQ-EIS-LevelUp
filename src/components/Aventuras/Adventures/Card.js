@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { getFile } from './functions'
 import React, { useEffect, useState, useContext } from 'react'
-import { likeAdventure, deleteAdventure } from '../../../Api'
+import { likeAdventure, deleteAdventure, getLikes } from '../../../Api'
 import { AuthContext } from '../../AuthContext'
 import { adventuresIMG, adventuresPDF } from '../../../resources/adventures/Adventures'
 
@@ -19,16 +19,16 @@ export const Card = ({ aventura }) => {
     setImg(getImg())
   }, [aventura])
 
-  const handleClickLike = () => {
+  async function handleClickLike(){
+    const likes = await getLikes(username);
+    const adventures = likes.adventures
     if (!token)
       return alert('No podés darle like a una aventura sin iniciar sesión')
     if (aventura.owner === username)
       return alert('No podés darle like a tu propia aventura')
-    if (status === 'like') {
-      setStatus(null)
+    if (adventures.some((adv) => adv.AdventureId == aventura.id)) {
       setLike(like - 1)
     } else {
-      setStatus('like')
       setLike(like + 1)
     }
     likeAdventure(aventura.id, username)
@@ -100,7 +100,7 @@ export const Card = ({ aventura }) => {
         {aventura.owner !== username && (
           <button
             className={status === 'like' ? 'likesactive' : 'likes'}
-            onClick={handleClickLike}
+            onClick={() => handleClickLike()}
           >
             <i class='gg-chevron-up-r'></i>
             <span className='likespan'> {like}</span>

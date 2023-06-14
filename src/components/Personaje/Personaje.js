@@ -63,8 +63,7 @@ export const Personaje = () => {
             <div className='box'>
               <span>{personaje.fullname}</span>
               <img
-                sr
-                alt='Portada del manual de monstruos'
+                alt='Imagen del personaje'
                 src={getImage(personaje.img)}
               />
 

@@ -10,6 +10,7 @@ import Personaje from './components/Personaje/Personaje'
 import Registro from './components/Cuenta/Registro'
 import CreacionPersonaje from './components/Personaje/CreacionPersonaje'
 import LoadAdventure from './components/Aventuras/LoadAdventure/LoadAdventure'
+import Inicio from './components/Inicio/Inicio'
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <AuthProvider>
         <NavBar buttons={['Aventuras', 'Manuales', 'Personajes']} />
         <Routes>
-          <Route path='/' element={<></>} />
+          <Route path='/' element={<Inicio/>} />
           <Route path='/registro' element={<Registro />} />
           <Route path='/aventuras' element={<Aventuras />} />
           <Route path='/aventuras/crear' element={<LoadAdventure />} />
