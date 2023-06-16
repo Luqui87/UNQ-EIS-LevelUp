@@ -30,3 +30,8 @@
     width: 80%;
     background-color: black;
 }
+
+.inicio > section {
+    font-size: 1.1em;
+    width: 70%;
+}

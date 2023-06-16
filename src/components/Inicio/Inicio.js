@@ -26,7 +26,7 @@ export const Inicio = () => {
             </button>
         </div>
         
-        <section id="Que-es-D&D" >
+        <section id="Que-es-DnD" >
             <h2>¿Qué es Dungeons & Dragons?</h2>
             <p>
                 En Dungeons & Dragons, los jugadores forman un grupo de aventureros que exploran mundos de fantasía mientras se embarcan
