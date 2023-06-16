@@ -11,6 +11,7 @@ import Registro from './components/Cuenta/Registro'
 import CreacionPersonaje from './components/Personaje/CreacionPersonaje'
 import LoadAdventure from './components/Aventuras/LoadAdventure/LoadAdventure'
 import Inicio from './components/Inicio/Inicio'
+import ModificarPassword from './components/Cuenta/ModificarPassword'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Inicio/>} />
           <Route path='/registro' element={<Registro />} />
+          <Route path='/password' element={<ModificarPassword />} />
           <Route path='/aventuras' element={<Aventuras />} />
           <Route path='/aventuras/crear' element={<LoadAdventure />} />
           <Route path='/manuales' element={<Manuales />} />
