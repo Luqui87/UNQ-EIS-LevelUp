@@ -130,3 +130,16 @@ export const getLikes = async username => {
 
   return data
 }
+
+export const getUser = async username => {
+  const data = await fetch(`${API_URL}/user/${username}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error))
+
+  return data
+}

@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { getUser } from '../../Api.js'
 import { AuthContext } from '../AuthContext'
 import { useNavigate } from 'react-router-dom'
 import './registro.css'
 
 export const ModificarPassword = () => {
-    const { setToken, setUsername } = useContext(AuthContext)
+    const { setToken, setUserPassword } = useContext(AuthContext)
     const navigate = useNavigate()
     const [error, setError] = useState('')
 
     const [datosDelUsuario, setDatosDelUsuario] = useState({
+        username: '',
         currentPassword: '',
         password: '',
         confirmPassword: '',
@@ -21,6 +23,20 @@ export const ModificarPassword = () => {
       }, [datosDelUsuario])
 
       const send = async () => {
+        if (!datosDelUsuario.currentPassword)
+        return setError('Se requiere la contraseña actual.')
+        if (!datosDelUsuario.password)
+        return setError('Debe de ingresar una contraseña nueva.')
+        if (!datosDelUsuario.confirmPassword)
+        return setError('La confirmación debe coincidir con la contraseña nueva.')
+        if (error) return
+        const res = await getUser(datosDelUsuario.username)
+        if (!res.token) return setError(res.message)
+        alert(res.message)
+        localStorage.setItem('token', res.token)
+        localStorage.setItem('userpassword', datosDelUsuario.password)
+        setToken(localStorage.getItem('token'))
+        setUserPassword(datosDelUsuario.password)
         navigate('/')
       }
       return (
