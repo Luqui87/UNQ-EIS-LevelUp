@@ -98,6 +98,13 @@ export const LoggedMenu = () => {
         <span>{username}</span>
       </div>
       <div className='despegable' style={{visibility: visibility}}>
+      <button
+          className='btnCerrarSesion'
+          onClick={() => {
+          }}
+        >
+          Modificar Contraseña
+        </button>
         <button
           className='btnCerrarSesion'
           onClick={() => {
