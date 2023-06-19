@@ -1,6 +1,6 @@
 const API_URL = 'http://localhost:3010'
 
-export const getCharacter = (owner, id) => {
+export const getCharacter = async (owner, id) => {
   return fetch(`${API_URL}/characters/${owner}/${id}`, { method: 'GET' })
     .then(response => response.json())
     .catch(error => console.error(error))
@@ -134,6 +134,20 @@ export const getLikes = async username => {
 export const getUser = async username => {
   const data = await fetch(`${API_URL}/user/${username}`, {
     method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error))
+
+  return data
+}
+
+export const changePassword = async user => {
+  const data = await fetch(`${API_URL}/auth/change/password`, {
+    method: 'PUT',
+    body: JSON.stringify(user),
     headers: {
       'Content-Type': 'application/json',
     },

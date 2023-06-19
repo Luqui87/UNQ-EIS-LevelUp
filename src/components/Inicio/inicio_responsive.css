@@ -1,0 +1,39 @@
+@media only screen and (max-width: 767px) {
+  .inicio {
+    padding-top: 0;
+  }
+
+  .inicio img {
+    width: 100%;
+  }
+
+  .inicio .botonesInicio {
+    flex-direction: row;
+    width: 100%;
+    padding-top: 0.1em;
+  }
+
+  .inicio .botonesInicio > button {
+    flex-basis: 33%;
+  }
+
+  .inicio section {
+    width: 100%;
+  }
+
+  .inicio hr {
+    height: 3px;
+    width: 100%;
+    background-color: black;
+  }
+
+  .inicio > section {
+    font-size: 1.1em;
+    width: 100%;
+  }
+
+  .video {
+    width: 90%;
+    height: 20em;
+  }
+}

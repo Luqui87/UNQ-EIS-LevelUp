@@ -5,49 +5,34 @@ import { useContext, useState, useEffect, useRef } from 'react'
 import { AuthContext } from '../AuthContext'
 import './menu.css'
 
-
-
 export const UnloggedMenu = () => {
-
-  const [visibility,setVisibility] = useState("hidden")
+  const [visibility, setVisibility] = useState('hidden')
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
       function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target) ) {
-          setVisibility("hidden");
-        }
+        if (ref.current && !ref.current.contains(event.target))
+          setVisibility('hidden')
       }
-      // Bind the event listener
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        // Unbind the event listener on clean up
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
-  } 
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [ref])
+  }
   const wrapperRef = useRef(null)
   useOutsideAlerter(wrapperRef)
 
-  const handleClickVisibility = () =>{
-    if (visibility == "hidden"){
-      setVisibility("visible")
-    }
-    else{
-      setVisibility("hidden")
-    }
+  const handleClickVisibility = () => {
+    if (visibility === 'hidden') setVisibility('visible')
+    else setVisibility('hidden')
   }
 
   return (
     <div className='menu' ref={wrapperRef}>
-      <div className='InNav' onClick={() => handleClickVisibility()} >
+      <div className='InNav' onClick={() => handleClickVisibility()}>
         <img src={question} alt='perfil' />
         <span>Invitado</span>
       </div>
-      <div className='despegable' style={{visibility: visibility}}>
+      <div className='despegable' style={{ visibility: visibility }}>
         <IniciarSesion />
         <br />
         <Link to='/registro'>Registrar Cuenta</Link>
@@ -58,47 +43,34 @@ export const UnloggedMenu = () => {
 
 export const LoggedMenu = () => {
   const { setToken, username, setUsername } = useContext(AuthContext)
-
-  const [visibility,setVisibility] = useState("hidden")
+  const [visibility, setVisibility] = useState('hidden')
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
       function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target) ) {
-          setVisibility("hidden");
-        }
+        if (ref.current && !ref.current.contains(event.target))
+          setVisibility('hidden')
       }
-      // Bind the event listener
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        // Unbind the event listener on clean up
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
-  } 
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [ref])
+  }
   const wrapperRef = useRef(null)
   useOutsideAlerter(wrapperRef)
 
-  const handleClickVisibility = () =>{
-    if (visibility == "hidden"){
-      setVisibility("visible")
-    }
-    else{
-      setVisibility("hidden")
-    }
+  const handleClickVisibility = () => {
+    if (visibility === 'hidden') setVisibility('visible')
+    else setVisibility('hidden')
   }
-  
+
   return (
     <div className='menu' ref={wrapperRef}>
-       <div className='InNav' onClick={() => handleClickVisibility()} >
+      <div className='InNav' onClick={() => handleClickVisibility()}>
         <img src={question} alt='perfil' />
         <span>{username}</span>
       </div>
-      <div className='despegable' style={{visibility: visibility}}>
-      <Link to='/password'>Modificar Contraseña</Link>
+      <div className='despegable' style={{ visibility: visibility }}>
+        <Link to='/password'>Modificar Contraseña</Link>
         <button
           className='btnCerrarSesion'
           onClick={() => {
