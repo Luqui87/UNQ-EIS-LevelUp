@@ -12,9 +12,9 @@ export const NavBar = ({ buttons }) => {
     <header>
       <nav className='navbar'>
         <Link to={'/'} className='logo'>
-          <img src='dnd_logo.webp'/>
+          <img src='dnd_logo.webp' alt='Logo DnD' />
         </Link>
-        {token ? <LoggedMenu/> : <UnloggedMenu/>}
+        {token ? <LoggedMenu /> : <UnloggedMenu />}
         <ul>
           {buttons?.map((button, index) => (
             <li key={`${index}-${button}`}>

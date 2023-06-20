@@ -1,9 +1,9 @@
-import { getManuals } from './functions';
-import './manuales.css';
-import { Link } from 'react-router-dom';
+import { getManuals } from './functions'
+import './manuales.css'
+import { Link } from 'react-router-dom'
 
 export const Manuales = () => {
-  const manuals = getManuals();
+  const manuals = getManuals()
   return (
     <main>
       <div className='container-manuales'>
@@ -48,7 +48,7 @@ export const Manuales = () => {
         </div>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default Manuales;
+export default Manuales

@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { loadAdventure } from '../../../Api'
 import { AuthContext } from '../../AuthContext'
 
 const LoadAdventure = () => {
@@ -31,9 +30,6 @@ const LoadAdventure = () => {
       return setError('Indique el/los idiomas para su aventura.')
     if (!adventure.pdf)
       return setError('Es necesario que cargue una aventura (PDF).')
-
-    const res = await loadAdventure(adventure)
-    // alert(res.message)
     navigate('/aventuras')
   }
 

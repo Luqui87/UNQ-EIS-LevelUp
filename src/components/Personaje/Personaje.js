@@ -28,16 +28,15 @@ export const Personaje = () => {
       ])
       setLoading(false)
     })
-  },[])
+  })
 
   async function confirm() {
     const res = window.confirm(`Quieres eliminar a ${personaje.fullname}`)
     if (res) {
       const res = await deleteCharacter(personaje.id)
       alert(res.message)
-      navigate('/personajes');
-    }
-    else {
+      navigate('/personajes')
+    } else {
       alert('Cancelado')
     }
   }
@@ -62,10 +61,7 @@ export const Personaje = () => {
           <div className='personaje-Card'>
             <div className='box'>
               <span>{personaje.fullname}</span>
-              <img
-                alt='Imagen del personaje'
-                src={getImage(personaje.img)}
-              />
+              <img alt='Imagen del personaje' src={getImage(personaje.img)} />
 
               <div className='info'>
                 <p>Nivel: {personaje.level}</p>
@@ -75,22 +71,20 @@ export const Personaje = () => {
               </div>
             </div>
 
-              <div className='botones'>
-                <PDFDownloadLink
-                  document={<PersonajePDF personaje={personaje} />}
-                  fileName={personaje.fullname}
-                >
-                  <button >Descargar</button>
-                </PDFDownloadLink>
+            <div className='botones'>
+              <PDFDownloadLink
+                document={<PersonajePDF personaje={personaje} />}
+                fileName={personaje.fullname}
+              >
+                <button>Descargar</button>
+              </PDFDownloadLink>
 
-                <Link to={'./edit'}>
-                  <button >Editar</button>
-                </Link>
-                <button onClick={() => confirm()} >Eliminar</button>
-              </div>
-
-
+              <Link to={'./edit'}>
+                <button>Editar</button>
+              </Link>
+              <button onClick={() => confirm()}>Eliminar</button>
             </div>
+          </div>
 
           <div className='stats'>
             <h2>Stats</h2>

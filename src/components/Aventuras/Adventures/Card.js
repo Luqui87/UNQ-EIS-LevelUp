@@ -26,7 +26,7 @@ export const Card = ({ aventura }) => {
       return alert('No podés darle like a una aventura sin iniciar sesión')
     if (aventura.owner === username)
       return alert('No podés darle like a tu propia aventura')
-    if (adventures.some((adv) => adv.AdventureId == aventura.id)) {
+    if (adventures.some((adv) => adv.AdventureId === aventura.id)) {
       setLike(like - 1)
     } else {
       setLike(like + 1)
