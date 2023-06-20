@@ -1,4 +1,5 @@
 import './aventuras.css'
+import './aventuras_responsive.css'
 import { useEffect, useState } from 'react'
 import { Card } from './Card'
 import { useNavigate } from 'react-router-dom'
@@ -8,15 +9,15 @@ export const Aventuras = () => {
   const [aventuras, setAventuras] = useState([{}])
   const [filteredList, setFilteredList] = new useState(aventuras)
   const navigate = useNavigate()
-  const [order, setOrder] = useState('default');
-  const [oficial, setOficial] = useState('');
+  const [order, setOrder] = useState('default')
+  const [oficial, setOficial] = useState('')
 
-  const sortAdventures = (e) => {
-      setOrder(e.target.value);
-      const sortedarray = filteredList.sort((a,b) => {
-      return e.target.value === 'asc'? (b.likes - a.likes) : (a.likes - b.likes);
-      })
-      setFilteredList(sortedarray)
+  const sortAdventures = e => {
+    setOrder(e.target.value)
+    const sortedarray = filteredList.sort((a, b) => {
+      return e.target.value === 'asc' ? b.likes - a.likes : a.likes - b.likes
+    })
+    setFilteredList(sortedarray)
   }
 
   const filterBySearch = event => {
@@ -24,11 +25,13 @@ export const Aventuras = () => {
     const normalizedQuery = removeAccents(query)
 
     var updatedList = [...aventuras]
-    updatedList = updatedList.filter(item => {
-      const normalizedTitle = removeAccents(item.title)
-      return normalizedTitle.includes(normalizedQuery)
-    }).sort((a,b) => {
-      return order === 'asc'?  (b.likes - a.likes): (a.likes - b.likes);
+    updatedList = updatedList
+      .filter(item => {
+        const normalizedTitle = removeAccents(item.title)
+        return normalizedTitle.includes(normalizedQuery)
+      })
+      .sort((a, b) => {
+        return order === 'asc' ? b.likes - a.likes : a.likes - b.likes
       })
     setFilteredList(updatedList)
   }
@@ -56,15 +59,28 @@ export const Aventuras = () => {
         <button className='button-red' onClick={loadAdventure}>
           Cargar Aventura
         </button>
-        <p>Ordenar por</p>
-        <select className='ordenAventuras' defaultValue={'default'} onChange={sortAdventures}  value={order} >
-          <option value='default' disabled>Seleccionar</option>
+        <label>Ordenar por</label>
+        <select
+          className='ordenAventuras'
+          defaultValue={'default'}
+          onChange={sortAdventures}
+          value={order}
+        >
+          <option value='default' disabled>
+            Seleccionar
+          </option>
           <option value='asc'>Más votada</option>
           <option value='dsc'>Menos votada</option>
         </select>
-        <span>
+        <span className='esOficial'>
           <label>Es oficial</label>
-          <input type='checkbox' value='default' onChange={event => setOficial(event.target.checked ? 'default' : '')} />
+          <input
+            type='checkbox'
+            value='default'
+            onChange={event =>
+              setOficial(event.target.checked ? 'default' : '')
+            }
+          />
         </span>
       </aside>
       <aside>
@@ -75,13 +91,15 @@ export const Aventuras = () => {
           onChange={filterBySearch}
         />
         <ul className='adventures_list'>
-          {filteredList?.map(aventura => (
-            aventura.owner?.includes(oficial) &&
-            <Card
-              aventura={aventura}
-              key={`${aventura.username}/${aventura.title}`}
-            />
-          ))}
+          {filteredList?.map(
+            aventura =>
+              aventura.owner?.includes(oficial) && (
+                <Card
+                  aventura={aventura}
+                  key={`${aventura.username}/${aventura.title}`}
+                />
+              )
+          )}
         </ul>
       </aside>
     </div>

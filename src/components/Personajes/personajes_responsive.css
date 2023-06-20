@@ -1,0 +1,22 @@
+@media only screen and (max-width: 767px) {
+  .characters {
+    width: 100%;
+    margin: 3em auto;
+  }
+
+  .character_card {
+    margin-bottom: 0.3em;
+  }
+
+  .character_card > span {
+    margin: auto;
+    max-width: 70%;
+  }
+
+  .charButtons {
+    margin-bottom: 0.3em;
+    padding: 0 0.2em;
+    gap: 0.2em;
+    margin: auto;
+  }
+}

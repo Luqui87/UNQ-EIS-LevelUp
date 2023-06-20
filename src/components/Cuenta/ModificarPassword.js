@@ -10,28 +10,32 @@ export const ModificarPassword = () => {
   const [error, setError] = useState('')
 
   const [datosDelUsuario, setDatosDelUsuario] = useState({
-    currentPassword: '',
     password: '',
+    newPassword: '',
     confirmPassword: '',
   })
 
   useEffect(() => {
-    if (datosDelUsuario.password !== datosDelUsuario.confirmPassword)
+    if (datosDelUsuario.newPassword !== datosDelUsuario.confirmPassword)
       setError('Las contraseñas nuevas no coinciden.')
     else setError('')
   }, [datosDelUsuario])
 
   const send = async () => {
-    if (!datosDelUsuario.currentPassword)
-      return setError('Se requiere la contraseña actual.')
     if (!datosDelUsuario.password)
+      return setError('Se requiere la contraseña actual.')
+    if (!datosDelUsuario.newPassword)
       return setError('Debe de ingresar una contraseña nueva.')
     if (!datosDelUsuario.confirmPassword)
       return setError('La confirmación debe coincidir con la contraseña nueva.')
     if (error) return
-    const res = await changePassword({ username: username, password: datosDelUsuario.password })
+    const res = await changePassword({
+      username: username,
+      password: datosDelUsuario.password,
+      newPassword: datosDelUsuario.newPassword,
+    })
     alert(res.message)
-    navigate('/')
+    if (res.status === 200) navigate('/')
   }
 
   return (
@@ -42,12 +46,12 @@ export const ModificarPassword = () => {
           <label>Contraseña actual</label>
           <input
             type='password'
-            name='currentPassword'
+            name='password'
             placeholder='Ingresar contraseña actual'
             onChange={event => {
               setDatosDelUsuario(datosPrevios => ({
                 ...datosPrevios,
-                currentPassword: event.target.value,
+                password: event.target.value,
               }))
             }}
             required
@@ -56,13 +60,13 @@ export const ModificarPassword = () => {
         <span>
           <label>Contraseña nueva</label>
           <input
-            name='password'
             type='password'
+            name='newPassword'
             placeholder='Ingresar contraseña nueva'
             onChange={event => {
               setDatosDelUsuario(datosPrevios => ({
                 ...datosPrevios,
-                password: event.target.value,
+                newPassword: event.target.value,
               }))
             }}
             required

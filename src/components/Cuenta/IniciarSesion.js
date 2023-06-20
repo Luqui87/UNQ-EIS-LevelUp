@@ -20,13 +20,12 @@ export const IniciarSesion = () => {
     if (!res.token) return setError(res.message)
 
     alert(res.message)
-    if(remember) {
+    if (remember) {
       localStorage.setItem('token', res.token)
       localStorage.setItem('username', datosDelUsuario.username)
       setToken(localStorage.getItem('token'))
       setUsername(localStorage.getItem('username'))
-    }
-    else {
+    } else {
       sessionStorage.setItem('token', res.token)
       sessionStorage.setItem('username', datosDelUsuario.username)
       setToken(sessionStorage.getItem('token'))
