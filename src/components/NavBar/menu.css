@@ -1,17 +1,9 @@
 .menu, .menu .InNav {
-    width: 15em;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
 }
-
-.menu {
-    position: absolute;
-    left: 10em;
-    height: 100%;
-}
-
 
  .menu:hover > div {
     cursor: pointer;
@@ -39,6 +31,7 @@
 
 .menu > div > img {
     max-width: 3em;
+    margin-right: 1em;
     border-radius: 50%;
 }
 

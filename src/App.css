@@ -17,6 +17,11 @@ center embed {
     padding: 0.9em 2em;
     cursor: pointer;
     margin-top: .5em;
-    /* width: 100%; */
     min-height: 2.9em;
+}
+
+@media only screen and (max-width: 767px) {    
+    body {
+        margin: 0;
+    }
 }

@@ -1,9 +1,9 @@
+import './menu.css'
 import question from '../../resources/question_mark.jpg'
 import IniciarSesion from '../../components/Cuenta/IniciarSesion'
 import { Link } from 'react-router-dom'
 import { useContext, useState, useEffect, useRef } from 'react'
 import { AuthContext } from '../AuthContext'
-import './menu.css'
 
 export const UnloggedMenu = () => {
   const [visibility, setVisibility] = useState('hidden')

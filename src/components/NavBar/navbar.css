@@ -7,14 +7,29 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     text-align: center;
     margin: auto;
     background-color: #FF3737;
 }
 
+.navbar > * {
+    flex-basis: 20%;
+}
+
+.navbar > ul {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    flex-basis: 40%;
+}
+
 .navbar > ul > li {
     list-style-type: none;
-    display: inline-block;
     margin: 0 1em;
     padding: 0.2em 1em; 
 }

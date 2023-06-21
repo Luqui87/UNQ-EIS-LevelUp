@@ -7,8 +7,9 @@
 }
 
 .inicio img {
-  width: 70%;
+  width: 80%;
   max-height: 30em;
+  object-fit: cover;
 }
 
 .inicio .botonesInicio {

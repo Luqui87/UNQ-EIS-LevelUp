@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import './navbar.css'
+import { Link } from 'react-router-dom'
 import { UnloggedMenu, LoggedMenu } from './Menu'
 import { useContext } from 'react'
 import { AuthContext } from '../AuthContext.js'
@@ -14,7 +14,6 @@ export const NavBar = ({ buttons }) => {
         <Link to={'/'} className='logo'>
           <img src='dnd_logo.webp' alt='Logo DnD' />
         </Link>
-        {token ? <LoggedMenu /> : <UnloggedMenu />}
         <ul>
           {buttons?.map((button, index) => (
             <li key={`${index}-${button}`}>
@@ -24,6 +23,7 @@ export const NavBar = ({ buttons }) => {
             </li>
           ))}
         </ul>
+        {token ? <LoggedMenu /> : <UnloggedMenu />}
       </nav>
     </header>
   )
