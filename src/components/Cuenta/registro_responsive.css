@@ -1,0 +1,9 @@
+@media only screen and (max-width: 767px) {
+  .form {
+    width: 80%;
+  }
+
+  .form-body input {
+    flex-basis: 70%;
+  }
+}

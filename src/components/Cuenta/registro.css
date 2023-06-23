@@ -10,7 +10,7 @@
     background: linear-gradient(to left, #ef8787, #d7d5d6);
     background-color: white;
     border-radius: 5px;
-    width: 48%;
+    width: 60%;
     margin: 5em auto;
 }
 
@@ -20,6 +20,7 @@
 
 .form #botonRegistro {
     flex-basis: 100%;
+    margin-bottom: 1em;
 }
 
 .form-body {
