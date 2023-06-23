@@ -1,5 +1,5 @@
-import { getManuals } from './functions'
 import './manuales.css'
+import { getManuals } from './functions'
 import { Link } from 'react-router-dom'
 
 export const Manuales = () => {
@@ -8,7 +8,11 @@ export const Manuales = () => {
     <main>
       <div className='container-manuales'>
         <div className='manual'>
-          <Link to={`./Manual del Jugador`}>
+          <Link
+            to={`./view/Manual del Jugador`}
+            onClick={() => localStorage.setItem('pdf', manuals[0])}
+            onAuxClick={() => localStorage.setItem('pdf', manuals[0])}
+          >
             <img
               className='portada'
               alt='Portada del manual del jugador'
@@ -21,7 +25,11 @@ export const Manuales = () => {
           </a>
         </div>
         <div className='manual'>
-          <Link to={`./Guía del Dungeon Master`}>
+          <Link
+            to={`./view/Guía del Dungeon Master`}
+            onClick={() => localStorage.setItem('pdf', manuals[1])}
+            onAuxClick={() => localStorage.setItem('pdf', manuals[1])}
+          >
             <img
               className='portada'
               alt='Portada de la guía del dungeon master'
@@ -34,7 +42,11 @@ export const Manuales = () => {
           </a>
         </div>
         <div className='manual'>
-          <Link to={`./Manual de Monstruos`}>
+          <Link
+            to={`./view/Manual de Monstruos`}
+            onClick={() => localStorage.setItem('pdf', manuals[2])}
+            onAuxClick={() => localStorage.setItem('pdf', manuals[2])}
+          >
             <img
               className='portada'
               alt='Portada del manual de monstruos'
