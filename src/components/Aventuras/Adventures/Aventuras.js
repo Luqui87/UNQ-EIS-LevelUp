@@ -83,7 +83,7 @@ export const Aventuras = () => {
           />
         </span>
       </aside>
-      <aside>
+      <aside className='adventures_list_aside'>
         <input
           type='text'
           className='searchbox'

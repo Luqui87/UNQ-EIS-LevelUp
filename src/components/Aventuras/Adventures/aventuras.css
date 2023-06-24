@@ -1,24 +1,32 @@
 @import url('https://unpkg.com/css.gg@2.0.0/icons/css/chevron-up-r.css');
 .adventures {
   display: flex;
-  justify-content: space-evenly;
+  justify-items: center;
+  align-items: center;
 }
 
 .searchbox {
   margin: 3em auto auto;
-  display: block;
   width: 70em;
   height: 2em;
   border: 1px solid gray;
   border-radius: 0.5em;
 }
 
+.adventures_list_aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  flex-basis: 85%;
+}
+
 .adventures_list {
   display: flex;
-  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   margin: 1em auto;
-  width: 75em;
+  padding: 0;
 }
 
 .card {
@@ -100,15 +108,20 @@
 }
 
 .filters {
+  flex-basis: 15%;
   display: flex;
-  justify-items: center;
-  height: 100vh;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+}
+
+.filters > button {
+  margin-bottom: 1.2em;
+  width: 80%;
 }
 
 .ordenAventuras {
   justify-self: end;
   font-size: 15px;
   width: 90%;
+  margin-bottom: 1.2em;
 }
