@@ -1,40 +1,44 @@
 header {
-    position: sticky;
-    top: 0;
+  position: sticky;
+  top: 0;
 }
 
 .navbar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: auto;
-    background-color: #FF3737;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  background-color: var(--primaryColor);
 }
 
 .navbar > * {
-    flex-basis: 20%;
+  flex-basis: 20%;
 }
 
-.navbar > ul {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    flex-basis: 40%;
+.navmenu {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  flex-basis: 40%;
 }
 
-.navbar > ul > li {
-    list-style-type: none;
-    margin: 0 1em;
-    padding: 0.2em 1em; 
+.navmenu > li {
+  list-style-type: none;
+  margin: 0 1em;
+  padding: 0.2em 1em;
 }
 
-.navbar img{
-    padding-top: 3px;
-    height: 3em;
+.navbar img {
+  padding-top: 3px;
+  height: 3em;
+}
+
+.burger {
+  display: none;
 }
