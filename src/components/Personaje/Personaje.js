@@ -71,7 +71,9 @@ export const Personaje = () => {
               </div>
             </div>
 
-            <div className='botones'>
+           
+          </div>
+          <div className='personaje-botones'>
               <PDFDownloadLink
                 document={<PersonajePDF personaje={personaje} />}
                 fileName={personaje.fullname}
@@ -83,8 +85,8 @@ export const Personaje = () => {
                 <button>Editar</button>
               </Link>
               <button onClick={() => confirm()}>Eliminar</button>
-            </div>
           </div>
+
 
           <div className='stats'>
             <h2>Stats</h2>
