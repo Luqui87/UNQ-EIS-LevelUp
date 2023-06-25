@@ -1,9 +1,10 @@
 import './aventuras.css'
 import './aventuras_responsive.css'
 import { useEffect, useState } from 'react'
-import { Card } from './Card'
+import { Card } from './Card/Card'
 import { useNavigate } from 'react-router-dom'
 import { removeAccents } from './functions'
+import uploadPDF from '../../../resources/pdf-upload.png'
 
 export const Aventuras = () => {
   const [aventuras, setAventuras] = useState([{}])
@@ -55,33 +56,39 @@ export const Aventuras = () => {
 
   return (
     <div className='adventures'>
-      <aside className='filters'>
-        <button className='button-red' onClick={loadAdventure}>
-          Cargar Aventura
-        </button>
-        <label>Ordenar por</label>
-        <select
-          className='ordenAventuras'
-          defaultValue={'default'}
-          onChange={sortAdventures}
-          value={order}
-        >
-          <option value='default' disabled>
-            Seleccionar
-          </option>
-          <option value='asc'>Más votada</option>
-          <option value='dsc'>Menos votada</option>
-        </select>
-        <span className='esOficial'>
-          <label>Es oficial</label>
-          <input
-            type='checkbox'
-            value='default'
-            onChange={event =>
-              setOficial(event.target.checked ? 'default' : '')
-            }
-          />
-        </span>
+      <aside className='filters_aside'>
+        <article className='filters'>
+          <span className='uploadPDF'>
+            <img
+              src={uploadPDF}
+              className='uploadPDFIcon'
+              onClick={loadAdventure}
+            />
+            <button onClick={loadAdventure}>Cargar Aventura</button>
+          </span>
+          <select
+            className='ordenAventuras'
+            defaultValue={'default'}
+            onChange={sortAdventures}
+            value={order}
+          >
+            <option value='default' disabled>
+              Ordenar por
+            </option>
+            <option value='asc'>Más votada</option>
+            <option value='dsc'>Menos votada</option>
+          </select>
+          <span className='esOficial'>
+            <label>Es oficial</label>
+            <input
+              type='checkbox'
+              value='default'
+              onChange={event =>
+                setOficial(event.target.checked ? 'default' : '')
+              }
+            />
+          </span>
+        </article>
       </aside>
       <aside className='adventures_list_aside'>
         <input

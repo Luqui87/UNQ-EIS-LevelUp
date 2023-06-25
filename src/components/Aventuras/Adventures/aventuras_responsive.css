@@ -1,69 +1,45 @@
 @media only screen and (max-width: 767px) {
   .adventures {
-    display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
-  }
-
-  .searchbox {
-    width: 80%;
-    margin-bottom: 1em;
   }
 
   .adventures_list {
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     margin: 0;
-    padding: 0;
-  }
-
-  .card {
-    width: 60%;
-    height: 55vh;
-    border-radius: 0;
-    margin: 0.2em 0;
-  }
-
-  .card img {
-    width: 100%;
-    height: 40%;
-    padding: 0;
-    object-fit: cover;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-
-  .username {
-    margin-bottom: 0;
-  }
-
-  .card a,
-  .card .buttons {
     padding: 0;
   }
 
   .filters {
     flex-direction: row;
-    flex-wrap: wrap;
-    height: 15vh;
+    flex-wrap: nowrap;
+    width: 70%;
+    height: 10vh;
+    margin-top: 0.5em;
   }
 
-  .filters .button-red {
-    flex-basis: 90%;
-  }
-
-  .filters > label {
-    margin: 0.5em 0;
-  }
-
-  .esOficial {
-    margin: 0.5em 0;
+  .filters > *:not(:last-child) {
+    margin-right: 1em;
   }
 
   .ordenAventuras {
     justify-self: end;
     font-size: 15px;
-    width: 90%;
+    flex-basis: 66%;
+    margin: 0;
+  }
+
+  .esOficial {
+    margin: 0.5em 0;
+    flex-basis: 33%;
+  }
+
+  .searchbox {
+    width: 80%;
+    margin: 1.5em;
+    margin-bottom: 1em;
   }
 }

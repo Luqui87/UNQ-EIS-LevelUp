@@ -1,9 +1,14 @@
+import './card.css'
+import './card_responsive.css'
 import { Link } from 'react-router-dom'
-import { getFile } from './functions'
+import { getFile } from '../functions'
 import React, { useEffect, useState, useContext } from 'react'
-import { likeAdventure, deleteAdventure, getLikes } from '../../../Api'
-import { AuthContext } from '../../AuthContext'
-import { adventuresIMG, adventuresPDF } from '../../../resources/adventures/Adventures'
+import { likeAdventure, deleteAdventure, getLikes } from '../../../../Api'
+import { AuthContext } from '../../../AuthContext'
+import {
+  adventuresIMG,
+  adventuresPDF,
+} from '../../../../resources/adventures/Adventures'
 
 export const Card = ({ aventura }) => {
   const file = getFile(aventura.pdf)
@@ -19,14 +24,14 @@ export const Card = ({ aventura }) => {
     setImg(getImg())
   }, [aventura])
 
-  async function handleClickLike(){
-    const likes = await getLikes(username);
+  async function handleClickLike() {
+    const likes = await getLikes(username)
     const adventures = likes.adventures
     if (!token)
       return alert('No podés darle like a una aventura sin iniciar sesión')
     if (aventura.owner === username)
       return alert('No podés darle like a tu propia aventura')
-    if (adventures.some((adv) => adv.AdventureId === aventura.id)) {
+    if (adventures.some(adv => adv.AdventureId === aventura.id)) {
       setLike(like - 1)
     } else {
       setLike(like + 1)
