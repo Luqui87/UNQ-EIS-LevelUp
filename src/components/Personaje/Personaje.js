@@ -28,7 +28,7 @@ export const Personaje = () => {
       ])
       setLoading(false)
     })
-  })
+  },[])
 
   async function confirm() {
     const res = window.confirm(`Quieres eliminar a ${personaje.fullname}`)
@@ -81,10 +81,10 @@ export const Personaje = () => {
                 <button>Descargar</button>
               </PDFDownloadLink>
 
-              <Link to={'./edit'}>
+               {personaje.owner != "default" && <Link to={'./edit'}>
                 <button>Editar</button>
-              </Link>
-              <button onClick={() => confirm()}>Eliminar</button>
+              </Link>}
+              { personaje.owner != "default" && <button onClick={() => confirm()}>Eliminar</button> }
           </div>
 
 
