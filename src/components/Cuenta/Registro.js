@@ -40,7 +40,7 @@ export const Registro = () => {
     localStorage.setItem('username', datosDelUsuario.username)
     setToken(localStorage.getItem('token'))
     setUsername(datosDelUsuario.username)
-    navigate('/personajes')
+    navigate('/')
   }
 
   return (
