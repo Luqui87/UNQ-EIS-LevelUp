@@ -19,7 +19,7 @@ export const NavBar = ({ buttons }) => {
     <header>
       <nav className='navbar'>
         <Link to={'/'} className='logo'>
-          <img src='dnd_logo.webp' alt='Logo DnD' />
+          <img src='dnd_logo.png' alt='Logo DnD' />
         </Link>
         <div>
           <button
