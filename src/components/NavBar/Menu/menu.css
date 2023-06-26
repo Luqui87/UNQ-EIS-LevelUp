@@ -1,0 +1,47 @@
+.menu,
+.menu .InNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.menu:hover > div {
+  cursor: pointer;
+}
+
+.menu .despegable {
+  position: absolute;
+  background-color: #212121;
+  width: 15em;
+  min-height: 3em;
+  height: 20em;
+  top: 3.4em;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  align-items: center;
+}
+
+.menu > *,
+.menu > .despegable > * {
+  color: white;
+}
+
+.menu > div > span {
+  flex-basis: 35%;
+}
+
+.menu > div > img {
+  max-width: 3em;
+  margin-right: 1em;
+  border-radius: 50%;
+}
+
+.btnCerrarSesion {
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 1em;
+  font-family: 'MedievalSharp', cursive;
+}

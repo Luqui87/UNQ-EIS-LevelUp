@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { signin } from '../../Api.js'
-import { AuthContext } from '../AuthContext'
-import { useNavigate } from 'react-router-dom'
 import './registro.css'
 import './registro_responsive.css'
+import React, { useContext, useEffect, useState } from 'react'
+import { signin } from '../../../Api.js'
+import { AuthContext } from '../../AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 export const Registro = () => {
   const { setToken, setUsername } = useContext(AuthContext)

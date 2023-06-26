@@ -1,7 +1,8 @@
 import './navbar.css'
 import './navbar_responsive.css'
 import { Link } from 'react-router-dom'
-import { UnloggedMenu, LoggedMenu } from './Menu'
+import UnloggedMenu from './Menu/UnloggedMenu'
+import LoggedMenu from './Menu/LoggedMenu'
 import { useContext, useState } from 'react'
 import { AuthContext } from '../AuthContext.js'
 
@@ -12,15 +13,6 @@ export const NavBar = ({ buttons }) => {
 
   const showNavMenu = () => {
     active ? setActive('') : setActive('active')
-    // const menu = document.getElementById('navmenu')
-    // const burger = document.getElementById('burger')
-    // menu.style.visibility === 'hidden'
-    //   ? (menu.style.visibility = 'visible')
-    //   : (menu.style.visibility = 'hidden')
-
-    // burger.style.visibility === 'hidden'
-    //   ? (menu.style.visibility = 'visible')
-    //   : (menu.style.visibility = 'hidden')
   }
 
   return (

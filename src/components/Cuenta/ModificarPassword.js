@@ -1,8 +1,9 @@
+import './Registrar Cuenta/registro.css'
+import './Registrar Cuenta/registro_responsive.css'
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { changePassword } from '../../Api'
 import { AuthContext } from '../AuthContext'
-import './registro.css'
 
 export const ModificarPassword = () => {
   const { username } = useContext(AuthContext)

@@ -1,7 +1,7 @@
+import './iniciarSesion.css'
 import React, { useContext, useState } from 'react'
-import { login } from '../../Api.js'
-import './IniciarSesion.css'
-import { AuthContext } from '../AuthContext'
+import { login } from '../../../Api'
+import { AuthContext } from '../../AuthContext'
 
 export const IniciarSesion = () => {
   const { setToken, setUsername } = useContext(AuthContext)
@@ -75,7 +75,7 @@ export const IniciarSesion = () => {
       </span>
       <span
         className='err'
-        style={{ display: `${error ? 'inline-block' : 'none'}` }}
+        style={{ visibility: `${error ? 'visible' : 'hidden'}` }}
       >
         {error}
       </span>
